@@ -13,7 +13,7 @@ before_script:
 
 build:
   tags:
-    - wordguesser
+    - src
   stage: build
   script:
     - "dotnet build"

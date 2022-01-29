@@ -600,3 +600,4 @@ src/bin/Debug/net6.0/src.pdb
 src/obj/staticwebassets.pack.sentinel
 src/obj/Debug/net6.0/src.dll
 .gitignore
+src/obj/staticwebassets.pack.sentinel

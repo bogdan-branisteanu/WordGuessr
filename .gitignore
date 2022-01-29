@@ -594,3 +594,9 @@ FodyWeavers.xsd
 /.vscode/launch.json
 /.vscode/tasks.json
 .vscode
+src/bin/Debug/net6.0/src.pdb
+src/bin/Debug/net6.0/src.dll
+src/bin/Debug/net6.0/src.pdb
+src/obj/staticwebassets.pack.sentinel
+src/obj/Debug/net6.0/src.dll
+.gitignore

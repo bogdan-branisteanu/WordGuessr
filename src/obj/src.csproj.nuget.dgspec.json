@@ -1,24 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\src.csproj": {}
+    "/Users/adi/WordGuesserRepLoc/word-guesser/src/src.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\src.csproj": {
+    "/Users/adi/WordGuesserRepLoc/word-guesser/src/src.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\src.csproj",
+        "projectUniqueName": "/Users/adi/WordGuesserRepLoc/word-guesser/src/src.csproj",
         "projectName": "src",
-        "projectPath": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\src.csproj",
-        "packagesPath": "C:\\Users\\bogdy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\obj\\",
+        "projectPath": "/Users/adi/WordGuesserRepLoc/word-guesser/src/src.csproj",
+        "packagesPath": "/Users/adi/.nuget/packages/",
+        "outputPath": "/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bogdy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/adi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
@@ -52,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
         }
       }
     }

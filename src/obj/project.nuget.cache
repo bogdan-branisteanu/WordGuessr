@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T+elDj+vTyUFgCzzdD7tTBUl6RA+cpEEOjmd0MhFTt5FjQVpaIk5LQQHV8rwwZ1/Vk1/Jj2LP7jDXhbGedKX/Q==",
+  "dgSpecHash": "3w11XmL9VvZKUCq+bVGpteiR7fNH/w5v9sZx+oTaTrWCmYraWKNVxN1G9Jy01f+GnIBLlLID1TTRCuQrvzem3Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\src.csproj",
+  "projectFilePath": "/Users/adi/WordGuesserRepLoc/word-guesser/src/src.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

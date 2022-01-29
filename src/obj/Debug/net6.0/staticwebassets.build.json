@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bd2QtWHpIC6iv4twpKM/o13Rqw5EzUB+DMRjYjyfufo=",
+  "Hash": "2TKgIcZ1taQGSHCNcg3m76hygNMzR0W8/aRAOjcQTjA=",
   "Source": "src",
   "BasePath": "_content/src",
   "Mode": "Default",
@@ -8,19 +8,19 @@
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "src\\wwwroot",
+      "Name": "src/wwwroot",
       "Source": "src",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\obj\\Debug\\net6.0\\scopedcss\\bundle\\src.styles.css",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/scopedcss/bundle/src.styles.css",
       "SourceId": "src",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/scopedcss/bundle/",
       "BasePath": "_content/src",
       "RelativePath": "src.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\obj\\Debug\\net6.0\\scopedcss\\bundle\\src.styles.css"
+      "OriginalItemSpec": "/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/scopedcss/bundle/src.styles.css"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\src.bundle.scp.css",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/scopedcss/projectbundle/src.bundle.scp.css",
       "SourceId": "src",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/scopedcss/projectbundle/",
       "BasePath": "_content/src",
       "RelativePath": "src.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\src.bundle.scp.css"
+      "OriginalItemSpec": "/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/scopedcss/projectbundle/src.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/bootstrap/bootstrap.min.css",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -65,13 +65,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
+      "OriginalItemSpec": "wwwroot/css/bootstrap/bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/bootstrap/bootstrap.min.css.map",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -82,13 +82,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
+      "OriginalItemSpec": "wwwroot/css/bootstrap/bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/FONT-LICENSE",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -99,13 +99,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/FONT-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -116,13 +116,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -133,13 +133,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -150,13 +150,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -167,13 +167,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -184,13 +184,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -201,13 +201,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/ICON-LICENSE",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -218,13 +218,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/open-iconic/README.md",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -235,13 +235,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
+      "OriginalItemSpec": "wwwroot/css/open-iconic/README.md"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\css\\site.css",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/css/site.css",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -252,13 +252,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
+      "OriginalItemSpec": "wwwroot/css/site.css"
     },
     {
-      "Identity": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\favicon.ico",
+      "Identity": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/favicon.ico",
       "SourceId": "src",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\bogdy\\OneDrive\\Desktop\\word_guesser\\word-guesser\\src\\wwwroot\\",
+      "ContentRoot": "/Users/adi/WordGuesserRepLoc/word-guesser/src/wwwroot/",
       "BasePath": "_content/src",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -269,7 +269,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
+      "OriginalItemSpec": "wwwroot/favicon.ico"
     }
   ]
 }

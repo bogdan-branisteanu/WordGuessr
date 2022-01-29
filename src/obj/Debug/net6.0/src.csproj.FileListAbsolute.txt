@@ -25,3 +25,6 @@
 /Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/ref/src.dll
 /Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/src.pdb
 /Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/src.genruntimeconfig.cache
+/Users/adi/WordGuesserRepLoc/word-guesser/src/bin/Debug/net6.0/Radzen.Blazor.dll
+/Users/adi/WordGuesserRepLoc/word-guesser/src/bin/Debug/net6.0/System.Linq.Dynamic.Core.dll
+/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/src.csproj.CopyComplete

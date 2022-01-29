@@ -4,18 +4,20 @@
 
 <PageTitle>Index</PageTitle>
 <center>
-    <h1>Word Guesser</h1>
+    
 
 
-<div class="container-fluid" style="margin-bottom: 22px;">
-    <div class="card shadow" style=" height: 1000px">
-        <div class="card-body">
+<div class="container-fluid" style="margin-bottom: 22px; background-color: rgb(45, 45, 45))">
+    
+    <h1 style="background-color: rgb(45, 45, 45); color: white">Word Guesser</h1>
+
+        <div class="card-body" style="background-color: rgb(45, 45, 45); height:1000px">
             <div style="padding: 11px;margin-bottom: 0;text-align: right;margin-right: 0;padding-top: 0px;"></div>
             <div class="row">
                 <div class="col-md-4 text-nowrap">
                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"
                         style="margin-top: 14px;">
-                        Please choose your word length:
+                        <a style="color: white">Please choose your word length:</a>
                         <label>
                             <select style="text-align:center" class="form-control mx-sm-1 form-control-sm custom-select custom-select-sm"
                                 ID="dropdown1" @bind="numLetters" > 
@@ -35,13 +37,13 @@
 
                     <ul style="margin-bottom:1px" id=@j>
                         @for(int i=1; i<=numLetters; i++){
-                            <li style="display: inline-block; margin-right:5px;" id=@i> <Tile Letter="A" Color="Green"/> </li>
+                            <li style="display: inline-block; margin-right:5px;" id=@i> <Tile/> </li>
                         }
                     </ul>
                 }
             
            
         </div>
-    </div>
+
 </div>
 </center>

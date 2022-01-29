@@ -1,11 +1,13 @@
 
 
-namespace src.Pages{
-   public partial class Index{
-      int numLetters = 5;
+namespace src.Pages
+{
+    public partial class Index
+    {
+        int numLetters = 5;
 
 
 
 
-   }
+    }
 }

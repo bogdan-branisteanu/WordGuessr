@@ -600,6 +600,7 @@ src/bin/Debug/net6.0/src.pdb
 src/obj/staticwebassets.pack.sentinel
 src/obj/Debug/net6.0/src.dll
 .gitignore
+
 src/bin/Debug/net6.0/src.deps.json
 src/bin/Debug/net6.0/src.dll
 src/bin/Debug/net6.0/src.pdb
@@ -620,3 +621,5 @@ src/obj/Debug/net6.0/src.genruntimeconfig.cache
 src/obj/Debug/net6.0/src.pdb
 src/obj/Debug/net6.0/staticwebassets.build.json
 src/obj/Debug/net6.0/staticwebassets.development.json
+src/obj/staticwebassets.pack.sentinel
+

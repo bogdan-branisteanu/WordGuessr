@@ -13,6 +13,30 @@ td[b-vc2bdftedn] {
     font-weight: bold;
     border:2px solid gray;
 }
+/* _content/src/Pages/Index.Razor.rz.scp.css */
+input:focus[b-qliapg12ll] {
+    outline: none !important;
+}
+*:focus[b-qliapg12ll] {
+    outline: none;
+  }
+
+  element[b-qliapg12ll]{outline:none;}
+
+  textarea:focus[b-qliapg12ll], input:focus[b-qliapg12ll]{
+    outline: none;
+}
+.from_Input[b-qliapg12ll]{
+    border: none;
+    outline:none;
+}
+.from_Input:active[b-qliapg12ll]{
+    border: none;
+    outline:none;
+}
+input:focus[b-qliapg12ll]{
+    border: none;
+}
 /* _content/src/Shared/MainLayout.razor.rz.scp.css */
 .page[b-7qw4gf6oqm] {
     position: relative;

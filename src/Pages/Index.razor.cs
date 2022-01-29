@@ -8,7 +8,7 @@ namespace src.Pages
         int numLetters = 5;
         private ElementReference inputDiv;
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        protected async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {

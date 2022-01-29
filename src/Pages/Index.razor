@@ -31,11 +31,11 @@
                 </div>
             </div>
 
-                @for(int j=0; j<6; j++){
+                @for(int j=1; j<=6; j++){
 
-                    <ul style="margin-bottom:1px">
-                        @for(int i=0; i<numLetters; i++){
-                            <li style="display: inline-block; margin-right:5px;"> <Tile Letter="A" Color="Green"/> </li>
+                    <ul style="margin-bottom:1px" id=@j>
+                        @for(int i=1; i<=numLetters; i++){
+                            <li style="display: inline-block; margin-right:5px;" id=@i> <Tile Letter="A" Color="Green"/> </li>
                         }
                     </ul>
                 }

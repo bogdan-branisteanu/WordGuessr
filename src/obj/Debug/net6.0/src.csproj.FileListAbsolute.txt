@@ -52,3 +52,7 @@ C:/Users/bogdy/OneDrive/Desktop/word_guesser/word-guesser/src/obj/Debug/net6.0/s
 C:/Users/bogdy/OneDrive/Desktop/word_guesser/word-guesser/src/obj/Debug/net6.0/ref/src.dll
 C:/Users/bogdy/OneDrive/Desktop/word_guesser/word-guesser/src/obj/Debug/net6.0/src.pdb
 C:/Users/bogdy/OneDrive/Desktop/word_guesser/word-guesser/src/obj/Debug/net6.0/src.genruntimeconfig.cache
+/Users/adi/WordGuesserRepLoc/word-guesser/src/bin/Debug/net6.0/Radzen.Blazor.dll
+/Users/adi/WordGuesserRepLoc/word-guesser/src/bin/Debug/net6.0/System.Linq.Dynamic.Core.dll
+/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/src.csproj.CopyComplete
+/Users/adi/WordGuesserRepLoc/word-guesser/src/obj/Debug/net6.0/scopedcss/Components/Tile.razor.rz.scp.css

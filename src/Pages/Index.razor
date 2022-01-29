@@ -1,8 +1,47 @@
 ﻿@page "/"
+@using src.Components
+
 
 <PageTitle>Index</PageTitle>
+<center>
+    <h1>Word Guesser</h1>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div class="container-fluid" style="margin-bottom: 22px;">
+    <div class="card shadow" style=" height: 1000px">
+        <div class="card-body">
+            <div style="padding: 11px;margin-bottom: 0;text-align: right;margin-right: 0;padding-top: 0px;"></div>
+            <div class="row">
+                <div class="col-md-4 text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"
+                        style="margin-top: 14px;">
+                        Please choose your word length:
+                        <label>
+                            <select style="text-align:center" class="form-control mx-sm-1 form-control-sm custom-select custom-select-sm"
+                                ID="dropdown1" @bind="numLetters" > 
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected>5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="0">random</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
 
+                @for(int j=0; j<6; j++){
+
+                    <ul style="margin-bottom:1px">
+                        @for(int i=0; i<numLetters; i++){
+                            <li style="display: inline-block; margin-right:5px;"> <Tile Letter="A" Color="Green"/> </li>
+                        }
+                    </ul>
+                }
+            
+           
+        </div>
+    </div>
+</div>
+</center>

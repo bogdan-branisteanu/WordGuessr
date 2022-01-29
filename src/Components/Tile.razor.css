@@ -1,0 +1,12 @@
+table, th, td {
+
+    color:white;
+    text-align: center;
+}
+
+td {
+    height: 80px;
+    width:  80px;
+    font-size: 40px;
+    font-weight: bold;
+}

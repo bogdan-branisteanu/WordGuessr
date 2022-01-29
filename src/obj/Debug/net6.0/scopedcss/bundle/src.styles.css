@@ -1,3 +1,16 @@
+/* _content/src/Components/Tile.razor.rz.scp.css */
+table[b-vc2bdftedn], th[b-vc2bdftedn], td[b-vc2bdftedn] {
+
+    color:white;
+    text-align: center;
+}
+
+td[b-vc2bdftedn] {
+    height: 80px;
+    width:  80px;
+    font-size: 40px;
+    font-weight: bold;
+}
 /* _content/src/Shared/MainLayout.razor.rz.scp.css */
 .page[b-7qw4gf6oqm] {
     position: relative;

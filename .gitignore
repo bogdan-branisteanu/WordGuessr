@@ -623,3 +623,6 @@ src/obj/Debug/net6.0/staticwebassets.build.json
 src/obj/Debug/net6.0/staticwebassets.development.json
 src/obj/staticwebassets.pack.sentinel
 
+src/obj/Debug/net6.0/src.assets.cache
+.gitignore
+src/obj/Debug/net6.0/src.GeneratedMSBuildEditorConfig.editorconfig

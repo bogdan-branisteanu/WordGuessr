@@ -2,6 +2,7 @@ table, th, td {
 
     color:white;
     text-align: center;
+    text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 td {
@@ -9,4 +10,5 @@ td {
     width:  80px;
     font-size: 40px;
     font-weight: bold;
+    border:2px solid gray;
 }

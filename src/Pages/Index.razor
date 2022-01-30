@@ -6,6 +6,7 @@
 <center>
     <h1>Word Guesser</h1>
 
+@{ Index index = new Index(); }
 
 <div class="container-fluid" style="margin-bottom: 22px;">
     <div class="card shadow" style=" height: 1000px">
@@ -18,7 +19,7 @@
                         Please choose your word length:
                         <label>
                             <select style="text-align:center" class="form-control mx-sm-1 form-control-sm custom-select custom-select-sm"
-                                ID="dropdown1" @bind="numLetters" > 
+                                ID="dropdown1" @bind=NumLetters > 
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5" selected>5</option>
@@ -34,11 +35,16 @@
                 @for(int j=1; j<=6; j++){
 
                     <ul style="margin-bottom:1px" id=@j>
-                        @for(int i=1; i<=numLetters; i++){
+                        @for(int i=1; i<=NumLetters; i++){
                             <li style="display: inline-block; margin-right:5px;" id=@i> <Tile Letter="A" Color="Green"/> </li>
                         }
                     </ul>
+                    
                 }
+                @{index.setNumLetters(NumLetters);
+                index.runGame();}
+
+                
             
            
         </div>

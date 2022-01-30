@@ -1,12 +1,12 @@
-/* _content/src/Components/Tile.razor.rz.scp.css */
-table[b-vc2bdftedn], th[b-vc2bdftedn], td[b-vc2bdftedn] {
+/* _content/src/Components/TileComponent.razor.rz.scp.css */
+table[b-pnbfza18kw], th[b-pnbfza18kw], td[b-pnbfza18kw] {
 
     color:white;
     text-align: center;
     text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-td[b-vc2bdftedn] {
+td[b-pnbfza18kw] {
     height: 80px;
     width:  80px;
     font-size: 40px;
@@ -37,6 +37,26 @@ input:focus[b-qliapg12ll] {
 input:focus[b-qliapg12ll]{
     border: none;
 }
+
+
+
+.grid-container[b-qliapg12ll] {
+    display: grid;
+    grid-column-gap: 1px;
+   
+}
+
+.grid-item[b-qliapg12ll] {
+   
+    width:80px;
+    
+}
+
+.game-container[b-qliapg12ll] {
+    display:flex;
+    justify-content: center;
+}
+
 /* _content/src/Shared/MainLayout.razor.rz.scp.css */
 .page[b-7qw4gf6oqm] {
     position: relative;

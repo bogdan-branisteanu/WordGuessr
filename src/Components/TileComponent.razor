@@ -1,12 +1,13 @@
 @using src.Components
 
 
-@switch (State)
+@switch (@Tile.State)
 {
+   
     case "contained":
         <table style="background-color:yellow">
             <tr>
-                <td>@Letter</td>
+                <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>
     break;
@@ -14,7 +15,7 @@
     case "double":
         <table style="background: linear-gradient(45deg, #b9d344 30%, green 70%);">
             <tr>
-                <td>@Letter</td>
+                <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>
     break;
@@ -22,7 +23,7 @@
     case "missing":
         <table style="background-color:black">
             <tr>
-                <td>@Letter</td>
+                <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>
     break;
@@ -30,7 +31,7 @@
     case "correct":
         <table style="background-color:green">
             <tr>
-                <td>@Letter</td>
+                <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>            
      break;
@@ -38,9 +39,11 @@
      default:
         <table style="background-color:rgb(45, 45, 45)">
             <tr>
-                <td>@Letter</td>
+                <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>    
      break;
 
 }
+
+

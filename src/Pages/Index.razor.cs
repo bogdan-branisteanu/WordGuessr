@@ -134,6 +134,11 @@ namespace src.Pages
       Game CurrentGame;
       Index index;
       Boolean BackspaceAllowed = false;
+      List<string> MissingLetters = new List<string>();
+      List<string> CorrectLetters = new List<string>();
+      List<string> ContainedLetters = new List<string>();
+      List<string> DoubleGreenLetters = new List<string>();
+      List<string> DoubleYellowLetters = new List<string>();
    
       public void runGame()
       {
@@ -314,8 +319,50 @@ namespace src.Pages
                   tile.Letter = "";
                }
          }
+         this.i = 1;
       }
 
+      public void UpdateKeysColour()
+      {
+         // change the colour of each key
+         Console.WriteLine("Missing: " + string.Join(", ", this.MissingLetters));
+         Console.WriteLine("Contained: " + string.Join(", ", this.ContainedLetters));
+         Console.WriteLine("Double Yellows: " + string.Join(", ", this.DoubleYellowLetters));
+         Console.WriteLine("Correct: " + string.Join(", ", this.CorrectLetters));
+      }
+      public void ChangeKeyColour(String key, String state)
+      {
+         if(state == "contained")
+            if(this.ContainedLetters.Count == 0 || !this.ContainedLetters.Contains(key))
+               this.ContainedLetters.Add(key);
+         if(state == "doubleYellow")
+         {  
+            if(this.ContainedLetters.Count > 0 && this.ContainedLetters.Contains(key))
+               this.ContainedLetters.Remove(key);
+            if(this.DoubleYellowLetters.Count == 0 || !this.DoubleYellowLetters.Contains(key))
+               this.DoubleYellowLetters.Add(key);
+         }
+         if(state == "correct" || state == "doubleGreen")
+         {
+            if(this.ContainedLetters.Count > 0 && this.ContainedLetters.Contains(key))
+               this.ContainedLetters.Remove(key);
+            if(this.DoubleYellowLetters.Count > 0 && this.DoubleYellowLetters.Contains(key))
+               this.DoubleYellowLetters.Remove(key);
+            if(this.CorrectLetters.Count == 0 || !this.CorrectLetters.Contains(key))
+               this.CorrectLetters.Add(key);
+         }
+         if(state == "missing")
+         {
+            if(this.ContainedLetters.Count > 0 && this.ContainedLetters.Contains(key))
+               this.ContainedLetters.Remove(key);
+            if(this.DoubleYellowLetters.Count > 0 && this.DoubleYellowLetters.Contains(key))
+               this.DoubleYellowLetters.Remove(key);
+            if(this.CorrectLetters.Count > 0 && this.CorrectLetters.Contains(key))
+               this.CorrectLetters.Remove(key);
+            if(this.MissingLetters.Count == 0 || !this.MissingLetters.Contains(key))
+               this.MissingLetters.Add(key);
+         }
+      }
       public Boolean CheckWordIfCorrect(String currentWord)
       {
          String givenWord = this.index.CurrentGame.getWord().ToString().ToUpper();
@@ -345,7 +392,11 @@ namespace src.Pages
          }
          CheckDoubles(currentWord, tileStates);
          for(int k = 0; k < NumLetters; k++)
-            ChangeTileState(k+1, j, tileStates[k]);
+            {
+               ChangeKeyColour(currentWord[k].ToString(), tileStates[k]);
+               ChangeTileState(k+1, j, tileStates[k]);
+            }
+         UpdateKeysColour();
          return gameWon;
       }
 

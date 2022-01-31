@@ -184,8 +184,13 @@ namespace src.Pages
         if (firstRender)
         {
             await inputDiv.FocusAsync();
+            Index index = new Index(); 
+            index.setNumLetters(NumLetters);
+            index.runGame();
 
         }
+
+        
 
     }
 

@@ -1,9 +1,8 @@
-using System;  
-using System.IO; 
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
 using src.Components;
 using System.Runtime.InteropServices;
+
 
 namespace src.Pages
 {
@@ -20,7 +19,7 @@ namespace src.Pages
       
       public override string ToString()
       {
-         return Word;
+        return Word;
       }
 
       public Boolean ProfanitySafe {set; get;}
@@ -44,10 +43,10 @@ namespace src.Pages
       
       public Game(int numLetters)
       {
-         NumLetters = numLetters;
+        NumLetters = numLetters;
       }
-      public int NumLetters {set; get;}
-      public WordInstance Word {set; get;}
+      public int NumLetters { set; get; }
+      public WordInstance Word { set; get; }
       public void chooseWord()
       {
          string Path;
@@ -130,7 +129,12 @@ namespace src.Pages
       }
    }
    public partial class Index{
-      int NumLetters {set; get;} =5;
+      
+
+      [Parameter] public string NumLettersString { get; set; }
+
+      int NumLetters {set; get;}
+
      
       public void runGame()
       {
@@ -146,7 +150,6 @@ namespace src.Pages
 
       }
 
-        int numLetters = 5;
         int i = 1;
         int j = 1;
         private ElementReference inputDiv;
@@ -161,9 +164,11 @@ namespace src.Pages
 
          protected override async Task OnInitializedAsync()
         {
+            NumLetters = Int32.Parse(NumLettersString);
+
             for (int j = 1; j <= 6; j++)
             {
-               for(int i = 1; i <= numLetters; i++){
+               for(int i = 1; i <= NumLetters; i++){
 
                   Tile tile = new Tile();
                   tile.tileId = j * 10 + i;

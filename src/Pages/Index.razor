@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/game/{NumLettersString}"
 @using src.Components
 @using Microsoft.AspNetCore.Components.Web
 @using src.Pages
@@ -13,31 +13,12 @@
     <h1 style="background-color: rgb(45, 45, 45); color: white">Word Guesser</h1>
 
         <div class="card-body" style="background-color: rgb(45, 45, 45); height:1000px">
-            <div class="row">
-                <div class="col-md-4 text-nowrap">
-                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"
-                        style="margin-top: 14px;">
-                        <a style="color: white">Please choose your word length:</a>
-                        <label>
-                            <select style="text-align:center" class="form-control mx-sm-1 form-control-sm custom-select custom-select-sm"
-                                ID="dropdown1" @bind=NumLetters > 
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5" selected>5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="0">random</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
+            
               
              
                 
             <div class="game-container">
-                <div class="grid-container" style="grid-template-columns:repeat(@numLetters, 80px);">
+                <div class="grid-container" style="grid-template-columns:repeat(@NumLetters, 80px);">
                     
                     @foreach(Tile tile in tileList){
                             <div class="grid-item">

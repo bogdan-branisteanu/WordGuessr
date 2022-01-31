@@ -133,8 +133,11 @@ namespace src.Pages
 
       [Parameter] public string NumLettersString { get; set; }
 
-      int NumLetters {set; get;}
+      [Parameter] public string LanguageString { get; set; }
 
+      int NumLetters {set; get;}
+    
+      
      
       public void runGame()
       {

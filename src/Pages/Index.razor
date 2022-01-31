@@ -1,4 +1,4 @@
-﻿@page "/game/{NumLettersString}"
+﻿@page "/game/{NumLettersString}/{LanguageString}"
 @using src.Components
 @using Microsoft.AspNetCore.Components.Web
 @using src.Pages
@@ -7,16 +7,12 @@
 <center>
     
 
-
 <div class="container-fluid" style="margin-bottom: 22px; background-color: rgb(45, 45, 45))"  @onkeydown="KeyboardEventHandler" tabindex="0" @ref="inputDiv" >
     
     <h1 style="background-color: rgb(45, 45, 45); color: white">Word Guesser</h1>
 
         <div class="card-body" style="background-color: rgb(45, 45, 45); height:1000px">
             
-              
-             
-                
             <div class="game-container">
                 <div class="grid-container" style="grid-template-columns:repeat(@NumLetters, 80px);">
                     

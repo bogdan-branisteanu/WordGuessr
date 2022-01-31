@@ -38,7 +38,7 @@
                 
             <div class="game-container">
                 <div class="grid-container" style="grid-template-columns:repeat(@numLetters, 80px);">
-                    
+                    @* @{Index index = new Index(); index.setNumLetters(NumLetters); index.runGame();} *@
                     @foreach(Tile tile in tileList){
                             <div class="grid-item">
                                 <li style="display: inline-block; margin-right:5px;" > <TileComponent Tile=@tile/> </li>

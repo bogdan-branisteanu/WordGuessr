@@ -275,7 +275,7 @@ namespace src.Pages
         if(args.Key.ToUpper() == "BACKSPACE")
             this.BackspaceEventHandler();
         else
-        if(String.Compare(args.Key.ToUpper(),"A") >= 0 && String.Compare(args.Key.ToUpper(),"Z") <= 0)
+        if(args.Key.ToUpper().All(Char.IsLetter) && args.Key.Length == 1)
         {
             Console.WriteLine(i + " " + j);
             foreach (Tile tile in tileList)

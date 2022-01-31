@@ -5,15 +5,23 @@
 {
    
     case "contained":
-        <table style="background-color:yellow">
+        <table style="background-color:#FBC400">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>
     break;
 
-    case "double":
+    case "doubleGreen":
         <table style="background: linear-gradient(45deg, #b9d344 30%, green 70%);">
+            <tr>
+                <td id=@Tile.tileId>@Tile.Letter</td>
+            </tr>
+        </table>
+    break;
+
+    case "doubleYellow":
+        <table style="background: linear-gradient(45deg, #b9d344 70%, green 30%);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>

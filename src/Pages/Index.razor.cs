@@ -133,7 +133,6 @@ namespace src.Pages
       int NumLetters {set; get;} = 5;
       Game CurrentGame;
       Index index;
-      Boolean isItYou = false;
       Boolean BackspaceAllowed = false;
    
       public void runGame()
@@ -197,8 +196,57 @@ namespace src.Pages
 
       public Boolean CheckWordIfExists(String currentWord)
       {
+         String path;
+         switch(this.index.NumLetters)
+         {
+            case 3:
+               path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\3LetterWordsEN.txt");
+               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
+               path = path.Replace("\\", "/");
+            }
+            break;
+            case 4:
+               path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\4LetterWordsEN.txt");
+               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
+               path = path.Replace("\\", "/");
+            }
+            break;
+            case 5:
+               path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\5LetterWordsEN.txt");
+               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
+               path = path.Replace("\\", "/");
+            }
+            break;
+            case 6:
+               path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\6LetterWordsEN.txt");
+               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
+               path = path.Replace("\\", "/");
+            }
+            break;
+            case 7:
+               path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\7LetterWordsEN.txt");
+               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
+               path = path.Replace("\\", "/");
+            }
+            break;
+            default:
+               path = "invalid";
+            break;
+         }
+         if(File.Exists(path))
+         {
+            String[] lines = File.ReadAllLines(@path);
+            foreach(String line in lines)
+               if(line.ToUpper().Contains(currentWord))
+                  return true;
+         }
+         else
+         {
+            // throw incorrect path exception
+            Console.WriteLine("The path: " + path + " is incorrect. We cannot check if the word: " + currentWord + " exists or not.");
+         }
          // check if word in corespondent file
-         return true;
+         return false;
       }
 
       public void ChangeTileState(int column, int row, String state)
@@ -208,9 +256,51 @@ namespace src.Pages
                tile.State = state;
       }
 
-      public void CheckDoubles(String currentWord)
+      public void CheckDoubles(String currentWord, String[] tileStates)
       {
          // check all doubles cases
+         // cases:
+         // doubles present:
+            // both double on green, stay like this
+            // both double on yellow, stay like this
+            // one double on green, one on yellow, maintain colours
+            // one double on green, others not present, change green to double state colour
+            // one double on yellow, others not present, create maybe a different double state with a different gradient
+         // no doubles present:
+            // one letter on yellow, the same one again on yellow, only keep the first one
+            // one letter on yellow, the same one again on green, only keep the later one
+            // one letter on green, anther one on yellow, only keep the green one
+         String givenWord = this.index.CurrentGame.getWord().ToString();
+         for(int k = 0; k < this.NumLetters; k++)
+         {
+            int countInGiven = 0;
+            int countInCurrent = 0;
+            for(int ind = 0; ind < this.NumLetters; ind++)
+            {  
+               if(currentWord[k] == givenWord[ind])
+                  countInGiven++;
+               if(currentWord[k] == currentWord[ind])
+                  countInCurrent++;
+            }
+            if(countInGiven == 1 && countInCurrent > 1)
+               for(int ind = 0; ind < this.NumLetters; ind++)
+               {
+                  if(k < ind && currentWord[ind] == currentWord[k])
+                  {
+                     if(tileStates[k] == "correct" && tileStates[ind] == "contained" || tileStates[k] == "contained" && tileStates[ind] == "contained")
+                        tileStates[ind] = "missing";
+                     else if(tileStates[k] == "contained" && tileStates[ind] == "correct")
+                        tileStates[k] = "missing";
+                  }
+               }
+            else
+               if(countInCurrent == 1 && countInGiven > 1)
+                  if(tileStates[k] == "correct")
+                     tileStates[k] = "doubleGreen";
+                  else if(tileStates[k] == "contained")
+                     tileStates[k] = "doubleYellow";
+            
+         }
       }
       
       public void ClearRow(int row)
@@ -218,11 +308,11 @@ namespace src.Pages
          for(this.i = NumLetters; this.i > 0; this.i--)
          {
             foreach (Tile tile in tileList)
-            if (tile.tileId == row*10 + i)
-            {
-               tile.State = "default";
-               tile.Letter = "";
-            }
+               if (tile.tileId == row*10 + i)
+               {
+                  tile.State = "default";
+                  tile.Letter = "";
+               }
          }
       }
 
@@ -230,6 +320,7 @@ namespace src.Pages
       {
          String givenWord = this.index.CurrentGame.getWord().ToString().ToUpper();
          Boolean gameWon = currentWord.Equals(givenWord);
+         String[] tileStates = new String[this.NumLetters]; 
          for(int k = 1; k <= NumLetters; k++)
          {  
             Boolean exactMatch = false;
@@ -240,21 +331,21 @@ namespace src.Pages
                      exactMatch = true;
                   else
                      partialMatch = true;
-            if(exactMatch && partialMatch)
-               if(!gameWon)
-                  ChangeTileState(k, j, "double");
-               else
-                  ChangeTileState(k, j, "correct");
+            if(exactMatch)
+               tileStates[k-1] = "correct";
+               //ChangeTileState(k, j, "correct");
             else
-            {
-               if(exactMatch)
-                  ChangeTileState(k, j, "correct");
-               if(partialMatch)
-                  ChangeTileState(k, j, "contained");
-               if(!exactMatch && !partialMatch)
-                  ChangeTileState(k, j, "missing");
-            }
+            if(partialMatch)
+               tileStates[k-1] = "contained";
+               //ChangeTileState(k, j, "contained");
+            else
+            if(!exactMatch && !partialMatch)
+               tileStates[k-1] = "missing";
+               //ChangeTileState(k, j, "missing");
          }
+         CheckDoubles(currentWord, tileStates);
+         for(int k = 0; k < NumLetters; k++)
+            ChangeTileState(k+1, j, tileStates[k]);
          return gameWon;
       }
 
@@ -327,7 +418,9 @@ namespace src.Pages
                {
                   //give inexistent word exception
                   Console.WriteLine("Word does not exist!");
+                  // if we want to clear the row we can use this:
                   this.ClearRow(j);
+                  // otherwise we don't do anything, just give the exception
                }
             }
             else
@@ -437,7 +530,7 @@ namespace src.Pages
          if(key == "enter")
             this.EnterEventHandler();
          else
-            AlphaKeyEventHandler(key);
+            this.AlphaKeyEventHandler(key);
       }
 
    }

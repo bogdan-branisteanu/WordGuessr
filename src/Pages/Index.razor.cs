@@ -130,7 +130,7 @@ namespace src.Pages
       }
    }
    public partial class Index{
-      int NumLetters {set; get;}
+      int NumLetters {set; get;} =5;
      
       public void runGame()
       {
@@ -142,9 +142,8 @@ namespace src.Pages
             Console.WriteLine(newGame.getWord());
          }
          else
-         {
             Console.WriteLine("Invalid number of letters: " + this.NumLetters);
-         }
+
       }
 
         int numLetters = 5;

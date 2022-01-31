@@ -65,52 +65,43 @@ namespace src.Pages
 
     }
 
-    private void KeyboardEventHandler(KeyboardEventArgs args)
+    private void BackspaceEventHandler()
     {
-        Console.WriteLine("Key Pressed is " + args.Key);
-        if(args.Key.ToUpper() == "ENTER")
+        // the decementation has to be done after the tile is found
+        // as when it gets to the last tile i=5, j=6, it needs to delete
+        // its content if there is one, otherwise, it need to decrement
+        // the i again to tile i=4, j=6 and delete its content
+        // quite a corner case
+
+        // EDIT: PLEASE CHECK BUT I THINK I VE DONE IT
+        
+        Boolean deleted = false;
+        foreach (Tile tile in tileList)
         {
-            this.EnterEventHandler();
-        }
-        else
-        {
-            Console.WriteLine(i + " " + j);
-            foreach (Tile tile in tileList)
+            if (tile.tileId == j*10 + i)
             {
-                if (tile.tileId == j*10 + i)
-                {
-                    tile.Letter = args.Key.ToUpper();
-                    tile.State  = "correct";
-                    Console.WriteLine(tile.tileId + " contains " + tile.Letter);
+                if(tile.Letter != "")
+                {   
+                    tile.Letter = "";
+                    tile.State  = "default";
+                    Console.WriteLine(tile.tileId + " delete " + tile.Letter);
+                    deleted = true;
                 }
             }
-            if(!(i == 5 && j == 6))
+        }
+        if(deleted == false && i != 1 || j != 1 && i != 5 || j != 6) 
+        {
+            i--;
+            if (i == 0)
             {
-                i++;
-                if (i == 6)
+                i = 5;
+                j -= 1;
+                if(j == 0)
                 {
                     i = 1;
-                    j += 1;
+                    j = 1;
                 }
             }
-        }
-        
-    }
-
-    private void ButtonEventHandler(string key)
-    {
-        Console.WriteLine("Virtual Key Pressed is " + key);
-        if(key == "backspace")
-        {   
-            // the decementation has to be done after the tile is found
-            // as when it gets to the last tile i=5, j=6, it needs to delete
-            // its content if there is one, otherwise, it need to decrement
-            // the i again to tile i=4, j=6 and delete its content
-            // quite a corner case
-
-            // EDIT: PLEASE CHECK BUT I THINK I VE DONE IT
-            
-            Boolean deleted = false;
             foreach (Tile tile in tileList)
             {
                 if (tile.tileId == j*10 + i)
@@ -124,39 +115,59 @@ namespace src.Pages
                     }
                 }
             }
-            if(deleted == false && i != 1 || j != 1 && i != 5 || j != 6) 
+        }
+    }
+
+    private void KeyboardEventHandler(KeyboardEventArgs args)
+    {
+        Console.WriteLine("Key Pressed is " + args.Key);
+        if(args.Key.ToUpper() == "ENTER")
+            this.EnterEventHandler();
+        
+        else 
+        if(args.Key.ToUpper() == "BACKSPACE")
+            this.BackspaceEventHandler();
+        else
+        if(String.Compare(args.Key.ToUpper(),"A") >= 0 && String.Compare(args.Key.ToUpper(),"Z") <= 0)
+        {
+            Console.WriteLine(i + " " + j);
+            foreach (Tile tile in tileList)
             {
-                i--;
-                if (i == 0)
+                if (tile.tileId == j*10 + i)
                 {
-                    i = 5;
-                    j -= 1;
-                    if(j == 0)
-                    {
-                        i = 1;
-                        j = 1;
-                    }
-                }
-                foreach (Tile tile in tileList)
-                {
-                    if (tile.tileId == j*10 + i)
-                    {
-                        if(tile.Letter != "")
-                        {   
-                            tile.Letter = "";
-                            tile.State  = "default";
-                            Console.WriteLine(tile.tileId + " delete " + tile.Letter);
-                            deleted = true;
+                    if(tile.Letter == "")
+                        {
+                            tile.Letter = args.Key.ToUpper();
+                            tile.State  = "correct";
+                            Console.WriteLine(tile.tileId + " contains " + tile.Letter);
                         }
-                    }
+                        else
+                            Console.WriteLine(tile.tileId + " is already occupied");
                 }
             }
-            
+            if(!(i == 5 && j == 6))
+            {
+                i++;
+                if (i == 6)
+                {
+                    i = 1;
+                    j += 1;
+                }
+            }
         }
-        else if(key == "enter")
-        {
+        else
+            Console.WriteLine("Input of key: " + args.Key + " is not accepted!");
+        
+    }
+
+    private void ButtonEventHandler(string key)
+    {
+        Console.WriteLine("Virtual Key Pressed is " + key);
+        if(key == "backspace")   
+            this.BackspaceEventHandler();     
+        else 
+        if(key == "enter")
             this.EnterEventHandler();
-        }
         else
         {
             Console.WriteLine(i + " " + j*10);
@@ -164,9 +175,14 @@ namespace src.Pages
             {
                 if (tile.tileId == j*10 + i)
                 {
-                    tile.Letter = key;
-                    tile.State  = "correct";
-                    Console.WriteLine(tile.tileId + " contains " + tile.Letter);
+                    if(tile.Letter == "")
+                    {
+                        tile.Letter = key;
+                        tile.State  = "correct";
+                        Console.WriteLine(tile.tileId + " contains " + tile.Letter);
+                    }
+                    else
+                        Console.WriteLine(tile.tileId + " is already occupied");
                 }
             }
             if(!(i == 5 && j == 6))

@@ -20,7 +20,7 @@
                         <a style="color: white">Please choose your word length:</a>
                         <label>
                             <select style="text-align:center" class="form-control mx-sm-1 form-control-sm custom-select custom-select-sm"
-                                ID="dropdown1" @bind="numLetters" > 
+                                ID="dropdown1" @bind=NumLetters > 
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5" selected>5</option>
@@ -33,6 +33,9 @@
                 </div>
             </div>
 
+              
+             
+                
             <div class="game-container">
                 <div class="grid-container" style="grid-template-columns:repeat(@numLetters, 80px);">
                     
@@ -43,13 +46,12 @@
                         }
                 </div>
             </div>
+
+            
+
             
        
           
-                
-                    
-
-                 
               
            
         </div>

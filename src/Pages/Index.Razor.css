@@ -41,3 +41,16 @@ input:focus{
     justify-content: center;
 }
 
+
+.button{
+    width: 50px;
+    height:60px;
+    border-radius: 12px;
+}
+
+.enter-button, .backspace-button{
+    width: 70px;
+    height:60px;
+    border-radius: 12px;
+}
+

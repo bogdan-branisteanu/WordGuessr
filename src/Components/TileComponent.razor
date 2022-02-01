@@ -5,7 +5,7 @@
 {
    
     case "contained":
-        <table style="background-color:#FBC400">
+        <table style="background-color:rgba(251,196,0, .8);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -13,7 +13,7 @@
     break;
 
     case "doubleGreen":
-        <table style="background: linear-gradient(45deg, #b9d344 30%, green 70%);">
+        <table style="background: linear-gradient(45deg, #71ddf3 40%, rgb(4 170 109) 70%);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -21,7 +21,7 @@
     break;
 
     case "doubleYellow":
-        <table style="background: linear-gradient(45deg, #b9d344 70%, green 30%);">
+        <table style="background: linear-gradient(45deg, #71ddf3 40%, rgb(251 196 0 / 80%) 70%);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -29,7 +29,7 @@
     break;
 
     case "missing":
-        <table style="background-color:black">
+        <table style="background-color:rgba(0,0,0, .4); ">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -37,7 +37,7 @@
     break;
 
     case "correct":
-        <table style="background-color:green">
+        <table style="background-color:rgba(4,170,109, 1);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -45,7 +45,7 @@
      break;
 
      default:
-        <table style="background-color:rgb(45, 45, 45)">
+        <table style="background-color:#333">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>

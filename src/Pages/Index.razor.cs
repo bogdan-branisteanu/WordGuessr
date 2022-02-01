@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
 using src.Components;
 using System.Runtime.InteropServices;
+using Microsoft.JSInterop;
 
 
 namespace src.Pages
@@ -9,6 +10,8 @@ namespace src.Pages
    // string pathProfanity = @"/resources/profanityWords.txt";
    public class WordInstance
    {
+
+      private readonly IJSRuntime js;
 
       // Constructor method that take the word itself as a parameter
       public WordInstance(string word)
@@ -193,7 +196,7 @@ namespace src.Pages
                }  
             }
          }
-         Button buttonQ     = new Button("Q", "50px", "60px", "white", "Q");
+           Button buttonQ     = new Button("Q", "50px", "60px", "white", "Q");
            Button buttonW     = new Button("W", "50px", "60px",  "white", "W");
            Button buttonE     = new Button("E", "50px", "60px",  "white", "E");
            Button buttonR     = new Button("R", "50px", "60px",  "white", "R");
@@ -212,7 +215,7 @@ namespace src.Pages
            Button buttonJ     = new Button("J", "50px", "60px",  "white", "J");
            Button buttonK     = new Button("K", "50px", "60px",  "white", "K");
            Button buttonL     = new Button("L", "50px", "60px",  "white", "L");
-           Button buttonEnter = new Button("enter", "70px", "60px",  "white", "", "fas fa-check-square");
+           Button buttonEnter = new Button("enter", "70px", "60px",  "white", "Enter");
            Button buttonZ     = new Button("Z", "50px", "60px",  "white", "Z");
            Button buttonX     = new Button("X", "50px", "60px",  "white", "X");
            Button buttonC     = new Button("C", "50px", "60px",  "white", "C");
@@ -220,7 +223,7 @@ namespace src.Pages
            Button buttonB     = new Button("B", "50px", "60px",  "white", "B");
            Button buttonN     = new Button("N", "50px", "60px",  "white", "N");
            Button buttonM     = new Button("M", "50px", "60px",  "white", "M");
-           Button buttonBksp  = new Button("backspace", "70px", "60px",  "white", "", "fas fa-backspace");
+           Button buttonBksp  = new Button("backspace", "70px", "60px",  "white", "⬅");
            
         
            
@@ -258,6 +261,7 @@ namespace src.Pages
 
       protected override async Task OnAfterRenderAsync(bool firstRender)
       {
+
          if (firstRender)
          {
             await inputDiv.FocusAsync();
@@ -265,6 +269,9 @@ namespace src.Pages
             this.index.setNumLetters(NumLetters);
             this.index.runGame();
          }
+
+         await js.InvokeVoidAsync("OnScrollEvent");
+        
       }
 
       public Boolean CheckWordIfExists(String currentWord)

@@ -12,6 +12,10 @@ namespace src.Components{
 
         public string height { get; set; }
 
+        //TODO: Add State, change color depending on state (like tile.cs)
+        //TODO: Api for dictionary
+        //TODO: Check input for profanity
+
         public Button(string sId, string width, string height, string Color, string Text, string Icon){
             this.sId    = sId;
             this.width  = width;

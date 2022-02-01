@@ -37,7 +37,33 @@ input:focus{
 }
 
 .game-container {
-    display:flex;
+    display: flex;
     justify-content: center;
+}
+
+.keyboard-container {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+
+.keyboard-grid-container {
+    display: grid;
+    grid-column-gap: 1px;
+    grid-row-gap: 3px;
+}
+
+
+.button{
+    width: 50px;
+    height:60px;
+    border-radius: 12px;
+}
+
+.enter-button, .backspace-button{
+    width: 70px;
+    height:60px;
+    border-radius: 12px;
 }
 

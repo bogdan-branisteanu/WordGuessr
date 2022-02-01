@@ -179,6 +179,11 @@ namespace src.Pages
       protected override async Task OnInitializedAsync()
       {
          NumLetters = Int32.Parse(NumLettersString);
+         if(NumLetters == 0)
+         {
+            Random rnd = new Random();
+            NumLetters = rnd.Next(3,8);
+         }
          
          for (int j = 1; j <= 6; j++)
          {
@@ -194,67 +199,67 @@ namespace src.Pages
             }
          }
          Button buttonQ     = new Button("Q", "50px", "60px", "white", "Q");
-           Button buttonW     = new Button("W", "50px", "60px",  "white", "W");
-           Button buttonE     = new Button("E", "50px", "60px",  "white", "E");
-           Button buttonR     = new Button("R", "50px", "60px",  "white", "R");
-           Button buttonT     = new Button("T", "50px", "60px",  "white", "T");
-           Button buttonY     = new Button("Y", "50px", "60px",  "white", "Y");
-           Button buttonU     = new Button("U", "50px", "60px",  "white", "U");
-           Button buttonI     = new Button("I", "50px", "60px",  "white", "I");
-           Button buttonO     = new Button("O", "50px", "60px",  "white", "O");
-           Button buttonP     = new Button("P", "50px", "60px",  "white", "P");
-           Button buttonA     = new Button("A", "50px", "60px",  "white", "A");
-           Button buttonS     = new Button("S", "50px", "60px",  "white", "S");
-           Button buttonD     = new Button("D", "50px", "60px",  "white", "D");
-           Button buttonF     = new Button("F", "50px", "60px",  "white", "F");
-           Button buttonG     = new Button("G", "50px", "60px",  "white", "G");
-           Button buttonH     = new Button("H", "50px", "60px",  "white", "H");
-           Button buttonJ     = new Button("J", "50px", "60px",  "white", "J");
-           Button buttonK     = new Button("K", "50px", "60px",  "white", "K");
-           Button buttonL     = new Button("L", "50px", "60px",  "white", "L");
-           Button buttonEnter = new Button("enter", "70px", "60px",  "white", "", "fas fa-check-square");
-           Button buttonZ     = new Button("Z", "50px", "60px",  "white", "Z");
-           Button buttonX     = new Button("X", "50px", "60px",  "white", "X");
-           Button buttonC     = new Button("C", "50px", "60px",  "white", "C");
-           Button buttonV     = new Button("V", "50px", "60px",  "white", "V");
-           Button buttonB     = new Button("B", "50px", "60px",  "white", "B");
-           Button buttonN     = new Button("N", "50px", "60px",  "white", "N");
-           Button buttonM     = new Button("M", "50px", "60px",  "white", "M");
-           Button buttonBksp  = new Button("backspace", "70px", "60px",  "white", "", "fas fa-backspace");
+         Button buttonW     = new Button("W", "50px", "60px",  "white", "W");
+         Button buttonE     = new Button("E", "50px", "60px",  "white", "E");
+         Button buttonR     = new Button("R", "50px", "60px",  "white", "R");
+         Button buttonT     = new Button("T", "50px", "60px",  "white", "T");
+         Button buttonY     = new Button("Y", "50px", "60px",  "white", "Y");
+         Button buttonU     = new Button("U", "50px", "60px",  "white", "U");
+         Button buttonI     = new Button("I", "50px", "60px",  "white", "I");
+         Button buttonO     = new Button("O", "50px", "60px",  "white", "O");
+         Button buttonP     = new Button("P", "50px", "60px",  "white", "P");
+         Button buttonA     = new Button("A", "50px", "60px",  "white", "A");
+         Button buttonS     = new Button("S", "50px", "60px",  "white", "S");
+         Button buttonD     = new Button("D", "50px", "60px",  "white", "D");
+         Button buttonF     = new Button("F", "50px", "60px",  "white", "F");
+         Button buttonG     = new Button("G", "50px", "60px",  "white", "G");
+         Button buttonH     = new Button("H", "50px", "60px",  "white", "H");
+         Button buttonJ     = new Button("J", "50px", "60px",  "white", "J");
+         Button buttonK     = new Button("K", "50px", "60px",  "white", "K");
+         Button buttonL     = new Button("L", "50px", "60px",  "white", "L");
+         Button buttonEnter = new Button("enter", "70px", "60px",  "white", "", "fas fa-check-square");
+         Button buttonZ     = new Button("Z", "50px", "60px",  "white", "Z");
+         Button buttonX     = new Button("X", "50px", "60px",  "white", "X");
+         Button buttonC     = new Button("C", "50px", "60px",  "white", "C");
+         Button buttonV     = new Button("V", "50px", "60px",  "white", "V");
+         Button buttonB     = new Button("B", "50px", "60px",  "white", "B");
+         Button buttonN     = new Button("N", "50px", "60px",  "white", "N");
+         Button buttonM     = new Button("M", "50px", "60px",  "white", "M");
+         Button buttonBksp  = new Button("backspace", "70px", "60px",  "white", "", "fas fa-backspace");
            
         
            
-           buttonList.Add(buttonQ);
-           buttonList.Add(buttonW);
-           buttonList.Add(buttonE);
-           buttonList.Add(buttonR);
-           buttonList.Add(buttonT);
-           buttonList.Add(buttonY);
-           buttonList.Add(buttonU);
-           buttonList.Add(buttonI);
-           buttonList.Add(buttonO);
-           buttonList.Add(buttonP);
-           buttonList.Add(buttonA);
-           buttonList.Add(buttonS);
-           buttonList.Add(buttonD);
-           buttonList.Add(buttonF);
-           buttonList.Add(buttonG);
-           buttonList.Add(buttonH);
-           buttonList.Add(buttonJ);
-           buttonList.Add(buttonK);
-           buttonList.Add(buttonL);
-           buttonList.Add(buttonEnter);
-           buttonList.Add(buttonZ);
-           buttonList.Add(buttonX);
-           buttonList.Add(buttonC);
-           buttonList.Add(buttonV);
-           buttonList.Add(buttonB);
-           buttonList.Add(buttonN);
-           buttonList.Add(buttonM);
-           buttonList.Add(buttonBksp);
+         buttonList.Add(buttonQ);
+         buttonList.Add(buttonW);
+         buttonList.Add(buttonE);
+         buttonList.Add(buttonR);
+         buttonList.Add(buttonT);
+         buttonList.Add(buttonY);
+         buttonList.Add(buttonU);
+         buttonList.Add(buttonI);
+         buttonList.Add(buttonO);
+         buttonList.Add(buttonP);
+         buttonList.Add(buttonA);
+         buttonList.Add(buttonS);
+         buttonList.Add(buttonD);
+         buttonList.Add(buttonF);
+         buttonList.Add(buttonG);
+         buttonList.Add(buttonH);
+         buttonList.Add(buttonJ);
+         buttonList.Add(buttonK);
+         buttonList.Add(buttonL);
+         buttonList.Add(buttonEnter);
+         buttonList.Add(buttonZ);
+         buttonList.Add(buttonX);
+         buttonList.Add(buttonC);
+         buttonList.Add(buttonV);
+         buttonList.Add(buttonB);
+         buttonList.Add(buttonN);
+         buttonList.Add(buttonM);
+         buttonList.Add(buttonBksp);
 
-           StateHasChanged();
-        } 
+         StateHasChanged();
+      } 
 
       protected override async Task OnAfterRenderAsync(bool firstRender)
       {
@@ -344,11 +349,11 @@ namespace src.Pages
             // one letter on yellow, the same one again on green, only keep the later one
             // one letter on green, anther one on yellow, only keep the green one
          String givenWord = this.index.CurrentGame.getWord().ToString();
-         for(int k = 0; k < this.NumLetters; k++)
+         for(int k = 0; k < index.NumLetters; k++)
          {
             int countInGiven = 0;
             int countInCurrent = 0;
-            for(int ind = 0; ind < this.NumLetters; ind++)
+            for(int ind = 0; ind < index.NumLetters; ind++)
             {  
                if(currentWord[k] == givenWord[ind])
                   countInGiven++;
@@ -356,7 +361,7 @@ namespace src.Pages
                   countInCurrent++;
             }
             if(countInGiven == 1 && countInCurrent > 1)
-               for(int ind = 0; ind < this.NumLetters; ind++)
+               for(int ind = 0; ind < index.NumLetters; ind++)
                {
                   if(k < ind && currentWord[ind] == currentWord[k])
                   {
@@ -379,7 +384,7 @@ namespace src.Pages
 
       public void ClearRow(int row)
       {
-         for(this.i = NumLetters; this.i > 0; this.i--)
+         for(this.i = index.NumLetters; this.i > 0; this.i--)
          {
             foreach (Tile tile in tileList)
                if (tile.tileId == row*10 + i)
@@ -398,6 +403,22 @@ namespace src.Pages
          Console.WriteLine("Contained: " + string.Join(", ", this.ContainedLetters));
          Console.WriteLine("Double Yellows: " + string.Join(", ", this.DoubleYellowLetters));
          Console.WriteLine("Correct: " + string.Join(", ", this.CorrectLetters));
+         foreach (Button button in buttonList)
+         {
+            foreach(String letter in this.MissingLetters)
+               if(letter == button.sId)
+                  button.State = "missing";
+            foreach(String letter in this.ContainedLetters)
+               if(letter == button.sId)
+                  button.State = "contained";
+            foreach(String letter in this.DoubleYellowLetters)
+               if(letter == button.sId)
+                  button.State = "doubleYellow";
+            foreach(String letter in this.CorrectLetters)
+               if(letter == button.sId)
+                  button.State = "correct";
+         }
+
       }
       public void ChangeKeyColour(String key, String state)
       {
@@ -436,12 +457,12 @@ namespace src.Pages
       {
          String givenWord = this.index.CurrentGame.getWord().ToString().ToUpper();
          Boolean gameWon = currentWord.Equals(givenWord);
-         String[] tileStates = new String[this.NumLetters]; 
-         for(int k = 1; k <= NumLetters; k++)
+         String[] tileStates = new String[index.NumLetters]; 
+         for(int k = 1; k <= index.NumLetters; k++)
          {  
             Boolean exactMatch = false;
             Boolean partialMatch = false;
-            for(int ind = 1; ind <= NumLetters; ind++)
+            for(int ind = 1; ind <= index.NumLetters; ind++)
                if(currentWord[k-1] == givenWord[ind-1])
                   if(k == ind)
                      exactMatch = true;
@@ -460,7 +481,7 @@ namespace src.Pages
                //ChangeTileState(k, j, "missing");
          }
          CheckDoubles(currentWord, tileStates);
-         for(int k = 0; k < NumLetters; k++)
+         for(int k = 0; k < index.NumLetters; k++)
             {
                ChangeKeyColour(currentWord[k].ToString(), tileStates[k]);
                ChangeTileState(k+1, j, tileStates[k]);
@@ -478,7 +499,7 @@ namespace src.Pages
             // show game won popup
             return true;
          }
-         if(this.i == NumLetters && this.j == 6)
+         if(this.i == index.NumLetters && this.j == 6)
          {
             Console.WriteLine("The game has ended! You have not guessed the given word! The given word was: " + index.CurrentGame.getWord().ToString().ToUpper());
             return true;
@@ -507,14 +528,14 @@ namespace src.Pages
          Console.WriteLine("The word has been submitted!");
          String CurrentWord = "";
          Boolean CompleteWord = false;
-         if(i == NumLetters)
+         if(i == index.NumLetters)
          {  
             foreach (Tile tile in tileList)
                   if (tile.tileId == j*10 + i && tile.Letter != "")
                      CompleteWord = true;
             if(CompleteWord == true)
             {
-               for(int k = 1; k <= NumLetters; k++)
+               for(int k = 1; k <= index.NumLetters; k++)
                   foreach (Tile tile in tileList)
                      if (tile.tileId == j*10 + k)
                      {
@@ -574,7 +595,7 @@ namespace src.Pages
                         Console.WriteLine(tile.tileId + " is already occupied");
             }
          }
-         if(i != 5)
+         if(i != index.NumLetters)
             i++;
       }
       private void BackspaceEventHandler()
@@ -590,7 +611,8 @@ namespace src.Pages
          {
             Boolean deleted = false;
             foreach (Tile tile in tileList)
-            {
+            {  
+               Console.WriteLine(tile.tileId);
                if (tile.tileId == j*10 + i)
                {
                   if(tile.Letter != "")

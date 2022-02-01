@@ -1,3 +1,34 @@
-<button class="button" id=@Button.sId  style="width: @Button.width; height: @Button.height; border-radius: 12px; background-color:@Button.Color" >
+@* <button class="button" id=@Button.sId  style="width: @Button.width; height: @Button.height; border-radius: 12px; background-color:@Button.Color" >
+     @Button.Text<i class=@Button.Icon style='font-size:30px;'></i> </button> *@
+
+@using src.Components
+@switch (@Button.State)
+{
+   
+     case "contained":
+     <button class="button" id=@Button.sId  style="width: @Button.width; height: @Button.height; border-radius: 12px; background-color:#FBC400" >
      @Button.Text<i class=@Button.Icon style='font-size:30px;'></i> </button>
+     break;
+
+     case "doubleYellow":
+     <button class="button" id=@Button.sId  style="width: @Button.width; height: @Button.height; border-radius: 12px; background-color:linear-gradient(45deg, #b9d344 70%, green 30%)" >
+     @Button.Text<i class=@Button.Icon style='font-size:30px;'></i> </button>
+     break;
+
+     case "missing":
+     <button class="button" id=@Button.sId  style="width: @Button.width; height: @Button.height; border-radius: 12px; background-color:red" >
+     @Button.Text<i class=@Button.Icon style='font-size:30px;'></i> </button>
+     break;
+
+     case "correct":
+     <button class="button" id=@Button.sId  style="width: @Button.width; height: @Button.height; border-radius: 12px; background-color:green" >
+     @Button.Text<i class=@Button.Icon style='font-size:30px;'></i> </button>
+     break;
+
+     default:
+     <button class="button" id=@Button.sId  style="width: @Button.width; height: @Button.height; border-radius: 12px; background-color:@Button.Color" >
+     @Button.Text<i class=@Button.Icon style='font-size:30px;'></i> </button>
+     break;
+
+}
 

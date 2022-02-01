@@ -14,7 +14,6 @@ namespace src.Components{
 
         public string State { get; set; }
 
-        //TODO: Add State, change color depending on state (like tile.cs)
         //TODO: Api for dictionary
         //TODO: Check input for profanity
 

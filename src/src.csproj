@@ -4,7 +4,4 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-  <!-- <ItemGroup> -->
-    <!-- <PackageReference Include="Radzen.Blazor" Version="3.14.8"/> -->
-  <!-- </ItemGroup> -->
 </Project>

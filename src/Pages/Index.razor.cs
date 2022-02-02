@@ -34,9 +34,8 @@ namespace src.Pages
             string[] lines = File.ReadAllLines(path);
             this.ProfanitySafe = true;
             foreach(string line in lines) if (this.ProfanitySafe == true)
-            {
-               this.ProfanitySafe = !(this.Word.Equals(line));
-            }
+               this.ProfanitySafe = !(this.Word.Equals(line.ToUpper()));
+            
          }
          else Console.WriteLine("Specified path for " + path + " does not exist!");
       }
@@ -307,7 +306,7 @@ namespace src.Pages
             }
             break;
             case 7:
-               path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\7LetterCommonWordsEN.txt");
+               path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\7LetterWordsEN.txt");
                if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
                path = path.Replace("\\", "/");
             }
@@ -321,7 +320,17 @@ namespace src.Pages
             String[] lines = File.ReadAllLines(@path);
             foreach(String line in lines)
                if(line.ToUpper().Contains(currentWord))
-                  return true;
+               {  
+                  WordInstance newWord = new WordInstance(currentWord);
+                  if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)){
+                     newWord.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"/resources/ProfanityWordsEN.txt"));
+                  } else {
+                     newWord.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"\resources\ProfanityWordsEN.txt"));
+                  }
+                  return newWord.ProfanitySafe;
+                  //return true;
+               }
+                  
          }
          else
          {
@@ -377,7 +386,7 @@ namespace src.Pages
                   }
                }
              else
-               if(countInCurrent == 1 && countInGiven > 1)
+               if(countInGiven > 1 && countInCurrent == 1)
                   if(tileStates[k] == "correct")
                      tileStates[k] = "doubleGreen";
                   else if(tileStates[k] == "contained")
@@ -427,6 +436,7 @@ namespace src.Pages
       }
       public void ChangeKeyColour(String key, String state)
       {
+         
          if(state == "contained")
             if(this.ContainedLetters.Count == 0 || !this.ContainedLetters.Contains(key))
                this.ContainedLetters.Add(key);
@@ -448,13 +458,9 @@ namespace src.Pages
          }
          if(state == "missing")
          {
-            if(this.ContainedLetters.Count > 0 && this.ContainedLetters.Contains(key))
-               this.ContainedLetters.Remove(key);
-            if(this.DoubleYellowLetters.Count > 0 && this.DoubleYellowLetters.Contains(key))
-               this.DoubleYellowLetters.Remove(key);
-            if(this.CorrectLetters.Count > 0 && this.CorrectLetters.Contains(key))
-               this.CorrectLetters.Remove(key);
-            if(this.MissingLetters.Count == 0 || !this.MissingLetters.Contains(key))
+            if(!(this.ContainedLetters.Count > 0 && this.ContainedLetters.Contains(key)) && !(this.DoubleYellowLetters.Count > 0 
+            && this.DoubleYellowLetters.Contains(key)) && !(this.CorrectLetters.Count > 0 && this.CorrectLetters.Contains(key)) &&
+            this.MissingLetters.Count == 0 || !this.MissingLetters.Contains(key))
                this.MissingLetters.Add(key);
          }
       }

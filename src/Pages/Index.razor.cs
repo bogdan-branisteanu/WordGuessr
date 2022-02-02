@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Components;
 using src.Components;
 using System.Runtime.InteropServices;
 using Microsoft.JSInterop;
+using Radzen;
+
 
 
 namespace src.Pages
@@ -137,6 +139,9 @@ namespace src.Pages
       [Parameter] public string NumLettersString { get; set; }
 
       [Parameter] public string LanguageString { get; set; }
+
+      [Inject] private NotificationService NotificationService {get;set;}
+
      
       int NumLetters {set; get;} = 5;
       Game CurrentGame;
@@ -264,6 +269,11 @@ namespace src.Pages
          StateHasChanged();
       } 
 
+      void ShowNotification(NotificationMessage message)
+      {
+            NotificationService.Notify(message);
+      }
+
       protected override async Task OnAfterRenderAsync(bool firstRender)
       {
 
@@ -276,6 +286,8 @@ namespace src.Pages
          }
 
          await js.InvokeVoidAsync("OnScrollEvent");
+
+              
         
       }
 
@@ -566,7 +578,8 @@ namespace src.Pages
                {
                   //give inexistent word exception
                   Console.WriteLine("Word does not exist!");
-                  // if we want to clear the row we can use this:
+                  ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Word does not exit", Detail = "Try again", Duration = 300000 });
+                 // if we want to clear the row we can use this:
                   this.ClearRow(j);
                   // otherwise we don't do anything, just give the exception
                }

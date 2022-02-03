@@ -154,6 +154,8 @@ namespace src.Pages
       List<string> ContainedLetters = new List<string>();
       List<string> DoubleGreenLetters = new List<string>();
       List<string> DoubleYellowLetters = new List<string>();
+
+      [Inject] NavigationManager NavigationManager { get; set; }
       public void runGame()
       {
          Console.WriteLine("index.i got here!");
@@ -180,7 +182,8 @@ namespace src.Pages
         List<Button> buttonList = new List<Button>();
 
       public async Task lostFocus(){
-         await inputDiv.FocusAsync();
+         if(NavigationManager.Uri.Contains("game"))
+            await inputDiv.FocusAsync();
       }
 
       public void setNumLetters(int numLetters)

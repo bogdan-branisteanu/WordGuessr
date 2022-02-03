@@ -9,7 +9,7 @@
 
 
 <center>
-<div class="container-fluid" style="margin-bottom: 22px; margin-top: 35px;"  @onkeydown="KeyboardEventHandler" tabindex="0" @ref="inputDiv" >
+<div class="container-fluid" style="margin-bottom: 22px; margin-top: 35px;"  @onkeydown="KeyboardEventHandler" tabindex="0" @ref="inputDiv" @onblur="lostFocus" >
 
         <div class="card-body" style=" height:90vh">
 

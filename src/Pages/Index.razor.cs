@@ -179,6 +179,10 @@ namespace src.Pages
 
         List<Button> buttonList = new List<Button>();
 
+      public async Task lostFocus(){
+         await inputDiv.FocusAsync();
+      }
+
       public void setNumLetters(int numLetters)
       {
          this.NumLetters = numLetters;

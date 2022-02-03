@@ -5,7 +5,7 @@
 {
    
     case "contained":
-        <table id="#@Tile.tileId" style="background-color:rgba(251,196,0, .8);">
+        <table class="tileTable" id="#@Tile.tileId" style="background-color:rgba(251,196,0, .8);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -13,7 +13,7 @@
     break;
 
     case "doubleGreen":
-        <table id="#@Tile.tileId" style="background: linear-gradient(45deg, #71ddf3 20%, rgb(4 170 109) 80%);">
+        <table class="tileTable" id="#@Tile.tileId" style="background: linear-gradient(45deg, #71ddf3 20%, rgb(4 170 109) 80%);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -21,7 +21,7 @@
     break;
 
     case "doubleYellow":
-        <table id="#@Tile.tileId"  style="background: linear-gradient(45deg, #71ddf3 20%, rgb(251 196 0 / 80%) 80%);">
+        <table class="tileTable" id="#@Tile.tileId"  style="background: linear-gradient(45deg, #71ddf3 20%, rgb(251 196 0 / 80%) 80%);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -29,7 +29,7 @@
     break;
 
     case "missing":
-        <table id="#@Tile.tileId" style="background-color:rgba(0,0,0, .4);">
+        <table class="tileTable" id="#@Tile.tileId" style="background-color:rgba(0,0,0, .4);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -37,7 +37,7 @@
     break;
 
     case "correct":
-        <table id="#@Tile.tileId" style="background-color:rgba(4,170,109, 1);">
+        <table class="tileTable" id="#@Tile.tileId" style="background-color:rgba(4,170,109, 1);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -45,7 +45,7 @@
     break;
 
     default:
-        <table id="#@Tile.tileId" style="background-color:#333;">
+        <table class="tileTable" id="#@Tile.tileId" style="background-color:#333;">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>

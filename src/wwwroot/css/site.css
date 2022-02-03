@@ -74,3 +74,28 @@ a, .btn-link {
     
 }
 
+@media only screen and (max-width: 700px) {
+    
+    .enter-button, .backspace-button{
+        width: 30px !important;
+        height:20px !important;
+        border-radius: 4px !important;
+    }
+    .buttonDiv{
+        width: 20px !important;
+        height: 30px !important;
+    }
+   
+
+    .mainTitle{
+        font-size: 20px !important;
+        margin-top: 2vw !important;
+    }
+
+    .keyboard{
+        width: 300px !important;
+    }
+    /*TODO: Radzen Notification, check out wtf is up with the tables td and fix keyboard
+}
+
+

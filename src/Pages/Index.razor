@@ -27,49 +27,47 @@
             &nbsp;
             &nbsp;
             
-             <div class="keyboard-container">
-                <div class="keyboard-grid-container" style="grid-template-columns:repeat(53, 10px);">
-                    @*TODO:This could be made nicer*@
+            <div class="keyboard">
+                <span class="row">
+                    @{string firstRow = "QWERTYUIOP";}
                     @foreach(Button button in buttonList){
-                        if(button.sId == "A"){
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>     
-                        }  else  {
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                        } 
-
-                        <div style="height:60px; width:50px;" @onclick="@(e => ButtonEventHandler(@button.sId))">
-                            <ButtonComponent Button=@button/>
-                        </div>
-
-                        if(button.sId == "L"){
-                            <div style="width: 25px; height:60px;"></div>
-                            <div style="width: 25px; height:60px;"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                        } if(button.sId == "enter"){
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>     
-                        } else {
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
-                            <div style="width: 25px; height:60px; margin-left:30px"></div>
+                        if(firstRow.Contains(button.sId)){
+                            <span class="buttonDiv"style="height:50px; width:40px;" @onclick="@(e => ButtonEventHandler(@button.sId))">
+                                <ButtonComponent Button=@button/>
+                            </span>
                         }
-                       
                     }
+                </span>
+                <span class="row">
+                    @{string secondRow = "ASDFGHJKL";}
+                    @foreach(Button button in buttonList){
+                        if(secondRow.Contains(button.sId)){
 
-                </div>
+                            if(button.sId == "A"){
+                                <span class="leftSpacer" style="width: 20px; height:60px;"></span>
+                            }   
+
+                            <span class="buttonDiv"style="height:50px; width:40px;" @onclick="@(e => ButtonEventHandler(@button.sId))">
+                                <ButtonComponent Button=@button/>
+                            </span>
+
+                            if(button.sId == "L" ){
+                                <span class="rightSpacer" style="width: 20px; height:60px"></span>
+                            } 
+                        }
+                    }
+                </span>
+                <span class="row">
+                    @{string thirdRow = "enterZXCVBNMbackspace";}
+                    @foreach(Button button in buttonList){
+                        if(thirdRow.Contains(button.sId)){
+                            <span class="buttonDiv"style="height:50px; width:40px;" @onclick="@(e => ButtonEventHandler(@button.sId))">
+                                <ButtonComponent Button=@button/>
+                            </span>
+                        }
+                    }
+                </span>
             </div>
-
         </div> 
 
 </div>

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 using src.Components;
 using System.Runtime.InteropServices;
 using Microsoft.JSInterop;
-
+using System.Timers;
 
 namespace src.Pages
 {
@@ -146,7 +146,6 @@ namespace src.Pages
       List<string> ContainedLetters = new List<string>();
       List<string> DoubleGreenLetters = new List<string>();
       List<string> DoubleYellowLetters = new List<string>();
-   
       public void runGame()
       {
          Console.WriteLine("I got here!");
@@ -417,20 +416,20 @@ namespace src.Pages
          Console.WriteLine("Contained: " + string.Join(", ", this.ContainedLetters));
          Console.WriteLine("Double Yellows: " + string.Join(", ", this.DoubleYellowLetters));
          Console.WriteLine("Correct: " + string.Join(", ", this.CorrectLetters));
-         foreach (Button button in buttonList)
+         foreach (Button Button in buttonList)
          {
             foreach(String letter in this.MissingLetters)
-               if(letter == button.sId)
-                  button.State = "missing";
+               if(letter == Button.sId)
+                  Button.State = "missing";
             foreach(String letter in this.ContainedLetters)
-               if(letter == button.sId)
-                  button.State = "contained";
+               if(letter == Button.sId)
+                  Button.State = "contained";
             foreach(String letter in this.DoubleYellowLetters)
-               if(letter == button.sId)
-                  button.State = "doubleYellow";
+               if(letter == Button.sId)
+                  Button.State = "doubleYellow";
             foreach(String letter in this.CorrectLetters)
-               if(letter == button.sId)
-                  button.State = "correct";
+               if(letter == Button.sId)
+                  Button.State = "correct";
          }
 
       }
@@ -518,6 +517,20 @@ namespace src.Pages
          return false;
       }
 
+      private async void ThrowAlertAnimation()
+      {
+         int k = 1;
+         foreach(Tile tile in tileList)
+         {
+            if(tile.tileId == this.j*10+k)
+               tile.State = "alert";
+            k++;
+         }
+         
+         await js.InvokeAsync<string>("GiveAlert", index.NumLetters, this.j);
+      }
+
+
       private void EnterEventHandler()
       {
          // form the word using the key of each tile
@@ -568,29 +581,31 @@ namespace src.Pages
                }
                else
                {
-                  //give inexistent word exception
+                  ThrowAlertAnimation();
+                  // give inexistent word exception
                   Console.WriteLine("Word does not exist!");
                   // if we want to clear the row we can use this:
-                  this.ClearRow(j);
+                  // this.ClearRow(j);
                   // otherwise we don't do anything, just give the exception
                }
             }
             else
             {
-               //give incomplete word exception
+               ThrowAlertAnimation();
+               // give incomplete word exception
                Console.WriteLine("Incomplete word!");
             }     
          }
          else
          {
-            //give incomplete word exception
+            // give incomplete word exception
+            ThrowAlertAnimation();
             Console.WriteLine("Incomplete word!");
          }
       }
       
       private void AlphaKeyEventHandler(String key)
       {
-         Console.WriteLine(i + " " + j);
          foreach (Tile tile in tileList)
          {
             if (tile.tileId == j*10 + i)
@@ -655,9 +670,9 @@ namespace src.Pages
          }
          if(i == 1)
             BackspaceAllowed = false;
-         }
-         
+         }   
       }
+
       private void KeyboardEventHandler(KeyboardEventArgs args)
       {
          Console.WriteLine("Key Pressed is " + args.Key);
@@ -684,6 +699,17 @@ namespace src.Pages
             this.EnterEventHandler();
          else
             this.AlphaKeyEventHandler(key);
+      }
+
+      private void OnTimedEvent(object source, ElapsedEventArgs e)
+      {
+         int k = 1;
+         foreach(Tile tile in this.tileList)
+         {       
+            if(tile.tileId == this.j*10 + k)
+               tile.State = "default";
+            k++;
+         }
       }
 
    }

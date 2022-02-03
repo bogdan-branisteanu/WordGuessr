@@ -10,6 +10,8 @@
 <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
 <script>
         function GiveAlert(numLetters, row, tiles) {
+
+            console.log(row);
             for(var i = 1; i <= numLetters; i++)
             {
                 var id = row*10 + i;
@@ -23,7 +25,7 @@
                 {
                     var id = row*10 + i;
                     document.getElementById(id.toString()).style.backgroundColor = "#333";
-                    //document.getElementById(id.toString()).classList.remove("incorrect");
+                    document.getElementById(id.toString()).classList.remove("incorrect");
                 }
             }, 500);
         }

@@ -1,3 +1,29 @@
+
+input:focus {
+    outline: none !important;
+}
+*:focus {
+    outline: none;
+  }
+
+  element{outline:none;}
+
+  textarea:focus, input:focus{
+    outline: none;
+}
+.from_Input{
+    border: none;
+    outline:none;
+}
+.from_Input:active{
+    border: none;
+    outline:none;
+}
+input:focus{
+    border: none;
+}
+
+
 .button{
     width: 70px;
     height:50px;

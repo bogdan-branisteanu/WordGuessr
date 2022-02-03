@@ -338,13 +338,8 @@ namespace src.Pages
             foreach(String line in lines)
                if(line.ToUpper().Contains(currentWord))
                {  
-                  WordInstance newWord = new WordInstance(currentWord);
-                  if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)){
-                     newWord.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"/resources/ProfanityWordsEN.txt"));
-                  } else {
-                     newWord.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"\resources\ProfanityWordsEN.txt"));
-                  }
-                  return newWord.ProfanitySafe;
+                  
+                  return true;
                   //return true;
                }
                   

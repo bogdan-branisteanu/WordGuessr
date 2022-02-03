@@ -9,20 +9,21 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
 <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
 <script>
-        function GiveAlert(numLetters, row) {
+        function GiveAlert(numLetters, row, tiles) {
             for(var i = 1; i <= numLetters; i++)
             {
-                console.log("I am makin em red")
                 var id = row*10 + i;
                 console.log(id);
                 document.getElementById(id.toString()).style.backgroundColor = "#dc7562";
+                document.getElementById(id.toString()).classList.add("incorrect");
             }
+
             setTimeout(() => {
                 for(var i = 1; i <= numLetters; i++)
                 {
-                    console.log("I am makin em back")
                     var id = row*10 + i;
                     document.getElementById(id.toString()).style.backgroundColor = "#333";
+                    //document.getElementById(id.toString()).classList.remove("incorrect");
                 }
             }, 500);
         }

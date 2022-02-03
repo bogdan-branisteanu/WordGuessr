@@ -148,7 +148,7 @@ namespace src.Pages
       List<string> DoubleYellowLetters = new List<string>();
       public void runGame()
       {
-         Console.WriteLine("I got here!");
+         Console.WriteLine("index.i got here!");
          if(this.NumLetters == 0 || this.NumLetters >= 3 && this.NumLetters <= 7)
          {
             CurrentGame = new Game(this.NumLetters);
@@ -186,12 +186,12 @@ namespace src.Pages
             NumLetters = rnd.Next(3,8);
          }
          
-         for (int j = 1; j <= 6; j++)
+         for (int k = 1; k <= 6; k += 1)
          {
-            for(int i = 1; i <= NumLetters; i++){
+            for(int ind = 1; ind <= NumLetters; ind++){
 
                Tile tile = new Tile();
-               tile.tileId = j * 10 + i;
+               tile.tileId = k * 10 + ind;
 
                if (!tileList.Contains(tile))
                {
@@ -269,6 +269,8 @@ namespace src.Pages
             this.index = new Index(); 
             this.index.setNumLetters(NumLetters);
             this.index.runGame();
+            this.index.i = 1;
+            this.index.j = 1;
          }
 
          await js.InvokeVoidAsync("OnScrollEvent");
@@ -278,7 +280,7 @@ namespace src.Pages
       public Boolean CheckWordIfExists(String currentWord)
       {
          String path;
-         switch(this.index.NumLetters)
+         switch(index.NumLetters)
          {
             case 3:
                path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\3LetterWordsEN.txt");
@@ -361,7 +363,7 @@ namespace src.Pages
             // one letter on yellow, the same one again on yellow, only keep the first one
             // one letter on yellow, the same one again on green, only keep the later one
             // one letter on green, anther one on yellow, only keep the green one
-         String givenWord = this.index.CurrentGame.getWord().ToString();
+         String givenWord = index.CurrentGame.getWord().ToString();
          for(int k = 0; k < index.NumLetters; k++)
          {
             int countInGiven = 0;
@@ -397,16 +399,16 @@ namespace src.Pages
 
       public void ClearRow(int row)
       {
-         for(this.i = index.NumLetters; this.i > 0; this.i--)
+         for(index.i = index.NumLetters; index.i > 0; index.i--)
          {
             foreach (Tile tile in tileList)
-               if (tile.tileId == row*10 + i)
+               if (tile.tileId == row*10 + index.i)
                {
                   tile.State = "default";
                   tile.Letter = "";
                }
          }
-         this.i = 1;
+         index.i = 1;
       }
 
       public void UpdateKeysColour()
@@ -465,7 +467,7 @@ namespace src.Pages
       }
       public Boolean CheckWordIfCorrect(String currentWord)
       {
-         String givenWord = this.index.CurrentGame.getWord().ToString().ToUpper();
+         String givenWord = index.CurrentGame.getWord().ToString().ToUpper();
          Boolean gameWon = currentWord.Equals(givenWord);
          String[] tileStates = new String[index.NumLetters]; 
          for(int k = 1; k <= index.NumLetters; k++)
@@ -480,21 +482,21 @@ namespace src.Pages
                      partialMatch = true;
             if(exactMatch)
                tileStates[k-1] = "correct";
-               //ChangeTileState(k, j, "correct");
+               //ChangeTileState(k, index.j, "correct");
             else
             if(partialMatch)
                tileStates[k-1] = "contained";
-               //ChangeTileState(k, j, "contained");
+               //ChangeTileState(k, index.j, "contained");
             else
             if(!exactMatch && !partialMatch)
                tileStates[k-1] = "missing";
-               //ChangeTileState(k, j, "missing");
+               //ChangeTileState(k, index.j, "missing");
          }
          CheckDoubles(currentWord, tileStates);
          for(int k = 0; k < index.NumLetters; k++)
             {
                ChangeKeyColour(currentWord[k].ToString(), tileStates[k]);
-               ChangeTileState(k+1, j, tileStates[k]);
+               ChangeTileState(k+1, index.j, tileStates[k]);
             }
          UpdateKeysColour();
          return gameWon;
@@ -509,7 +511,7 @@ namespace src.Pages
             // show game won popup
             return true;
          }
-         if(this.i == index.NumLetters && this.j == 6)
+         if(index.i == index.NumLetters && index.j == 6)
          {
             Console.WriteLine("The game has ended! You have not guessed the given word! The given word was: " + index.CurrentGame.getWord().ToString().ToUpper());
             return true;
@@ -519,15 +521,9 @@ namespace src.Pages
 
       private async void ThrowAlertAnimation()
       {
+         // Console.WriteLine("Makin it red when j is " + index.j);
+         await js.InvokeAsync<string>("GiveAlert", index.NumLetters, index.j, tileList);
          int k = 1;
-         foreach(Tile tile in tileList)
-         {
-            if(tile.tileId == this.j*10+k)
-               tile.State = "alert";
-            k++;
-         }
-         
-         await js.InvokeAsync<string>("GiveAlert", index.NumLetters, this.j);
       }
 
 
@@ -540,28 +536,27 @@ namespace src.Pages
             // check if the game is over
                   // if it is, give a game is over popup managing the outcome
             // else:
-                  // j = j + 1
-                  // i = 1
+                  // index.j = index.j + 1
+                  // index.i = 1
          // else:
             // throw incorrect word exception
             // clear all tiles
-            // i = 1
+            // index.i = 1
 
          // EDIT: IMPLEMENTED, CHECK IF IT'S RIGHT
 
-         Console.WriteLine("The word has been submitted!");
          String CurrentWord = "";
          Boolean CompleteWord = false;
-         if(i == index.NumLetters)
+         if(index.i == index.NumLetters)
          {  
             foreach (Tile tile in tileList)
-                  if (tile.tileId == j*10 + i && tile.Letter != "")
+                  if (tile.tileId == index.j*10 + index.i && tile.Letter != "")
                      CompleteWord = true;
             if(CompleteWord == true)
             {
                for(int k = 1; k <= index.NumLetters; k++)
                   foreach (Tile tile in tileList)
-                     if (tile.tileId == j*10 + k)
+                     if (tile.tileId == index.j*10 + k)
                      {
                         CurrentWord += tile.Letter;
                      }
@@ -574,8 +569,9 @@ namespace src.Pages
                   }
                   else
                   {
-                     i = 1;
-                     j += 1;
+                     Console.WriteLine("The word has been submitted!");
+                     index.i = 1;
+                     index.j += 1;
                      BackspaceAllowed = false;
                   }
                }
@@ -585,7 +581,7 @@ namespace src.Pages
                   // give inexistent word exception
                   Console.WriteLine("Word does not exist!");
                   // if we want to clear the row we can use this:
-                  // this.ClearRow(j);
+                  // this.ClearRow(index.j);
                   // otherwise we don't do anything, just give the exception
                }
             }
@@ -608,7 +604,7 @@ namespace src.Pages
       {
          foreach (Tile tile in tileList)
          {
-            if (tile.tileId == j*10 + i)
+            if (tile.tileId == index.j*10 + index.i)
             {
                if(tile.Letter == "")
                      {
@@ -621,25 +617,25 @@ namespace src.Pages
                         Console.WriteLine(tile.tileId + " is already occupied");
             }
          }
-         if(i != index.NumLetters)
-            i++;
+         if(index.i != index.NumLetters)
+            index.i++;
       }
       private void BackspaceEventHandler()
       {
          // the decementation has to be done after the tile is found
-         // as when it gets to the last tile i=5, j=6, it needs to delete
+         // as when it gets to the last tile index.i=5, index.j=6, it needs to delete
          // its content if there is one, otherwise, it need to decrement
-         // the i again to tile i=4, j=6 and delete its content
+         // the index.i again to tile index.i=4, index.j=6 and delete its content
          // quite a corner case
 
-         // EDIT: PLEASE CHECK BUT I THINK I VE DONE IT
+         // EDIT: PLEASE CHECK BUT index.i THINK index.i VE DONE IT
          if(BackspaceAllowed)
          {
             Boolean deleted = false;
             foreach (Tile tile in tileList)
             {  
-               Console.WriteLine(tile.tileId);
-               if (tile.tileId == j*10 + i)
+
+               if (tile.tileId == index.j*10 + index.i)
                {
                   if(tile.Letter != "")
                   {   
@@ -650,13 +646,13 @@ namespace src.Pages
                   }
                }
             }
-         //if(deleted == false && i != 1 && i != 5) 
-         if(deleted == false && i != 1)
+         //if(deleted == false && index.i != 1 && index.i != 5) 
+         if(deleted == false && index.i != 1)
          {
-            i--;
+            index.i--;
             foreach (Tile tile in tileList)
             {
-               if (tile.tileId == j*10 + i)
+               if (tile.tileId == index.j*10 + index.i)
                {
                   if(tile.Letter != "")
                   {   
@@ -668,7 +664,7 @@ namespace src.Pages
                }
             }
          }
-         if(i == 1)
+         if(index.i == 1)
             BackspaceAllowed = false;
          }   
       }
@@ -706,7 +702,7 @@ namespace src.Pages
          int k = 1;
          foreach(Tile tile in this.tileList)
          {       
-            if(tile.tileId == this.j*10 + k)
+            if(tile.tileId == index.j*10 + k)
                tile.State = "default";
             k++;
          }

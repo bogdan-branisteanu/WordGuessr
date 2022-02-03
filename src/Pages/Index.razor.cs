@@ -4,8 +4,7 @@ using src.Components;
 using System.Runtime.InteropServices;
 using Microsoft.JSInterop;
 using Radzen;
-
-
+using System.Timers;
 
 namespace src.Pages
 {
@@ -36,9 +35,8 @@ namespace src.Pages
             string[] lines = File.ReadAllLines(path);
             this.ProfanitySafe = true;
             foreach(string line in lines) if (this.ProfanitySafe == true)
-            {
-               this.ProfanitySafe = !(this.Word.Equals(line));
-            }
+               this.ProfanitySafe = !(this.Word.Equals(line.ToUpper()));
+            
          }
          else Console.WriteLine("Specified path for " + path + " does not exist!");
       }
@@ -152,7 +150,6 @@ namespace src.Pages
       List<string> ContainedLetters = new List<string>();
       List<string> DoubleGreenLetters = new List<string>();
       List<string> DoubleYellowLetters = new List<string>();
-   
       public void runGame()
       {
          Console.WriteLine("I got here!");
@@ -206,36 +203,34 @@ namespace src.Pages
                }  
             }
          }
-           Button buttonQ     = new Button("Q", "50px", "60px",  "white", "Q");
-           Button buttonW     = new Button("W", "50px", "60px",  "white", "W");
-           Button buttonE     = new Button("E", "50px", "60px",  "white", "E");
-           Button buttonR     = new Button("R", "50px", "60px",  "white", "R");
-           Button buttonT     = new Button("T", "50px", "60px",  "white", "T");
-           Button buttonY     = new Button("Y", "50px", "60px",  "white", "Y");
-           Button buttonU     = new Button("U", "50px", "60px",  "white", "U");
-           Button buttonI     = new Button("I", "50px", "60px",  "white", "I");
-           Button buttonO     = new Button("O", "50px", "60px",  "white", "O");
-           Button buttonP     = new Button("P", "50px", "60px",  "white", "P");
-           Button buttonA     = new Button("A", "50px", "60px",  "white", "A");
-           Button buttonS     = new Button("S", "50px", "60px",  "white", "S");
-           Button buttonD     = new Button("D", "50px", "60px",  "white", "D");
-           Button buttonF     = new Button("F", "50px", "60px",  "white", "F");
-           Button buttonG     = new Button("G", "50px", "60px",  "white", "G");
-           Button buttonH     = new Button("H", "50px", "60px",  "white", "H");
-           Button buttonJ     = new Button("J", "50px", "60px",  "white", "J");
-           Button buttonK     = new Button("K", "50px", "60px",  "white", "K");
-           Button buttonL     = new Button("L", "50px", "60px",  "white", "L");
-           Button buttonEnter = new Button("enter", "70px", "60px",  "white", "Enter");
-           Button buttonZ     = new Button("Z", "50px", "60px",  "white", "Z");
-           Button buttonX     = new Button("X", "50px", "60px",  "white", "X");
-           Button buttonC     = new Button("C", "50px", "60px",  "white", "C");
-           Button buttonV     = new Button("V", "50px", "60px",  "white", "V");
-           Button buttonB     = new Button("B", "50px", "60px",  "white", "B");
-           Button buttonN     = new Button("N", "50px", "60px",  "white", "N");
-           Button buttonM     = new Button("M", "50px", "60px",  "white", "M");
-           Button buttonBksp  = new Button("backspace", "70px", "60px",  "white", "⬅");
-           
-        
+         Button buttonQ     = new Button("Q", "50px", "60px",  "white", "Q");
+         Button buttonW     = new Button("W", "50px", "60px",  "white", "W");
+         Button buttonE     = new Button("E", "50px", "60px",  "white", "E");
+         Button buttonR     = new Button("R", "50px", "60px",  "white", "R");
+         Button buttonT     = new Button("T", "50px", "60px",  "white", "T");
+         Button buttonY     = new Button("Y", "50px", "60px",  "white", "Y");
+         Button buttonU     = new Button("U", "50px", "60px",  "white", "U");
+         Button buttonI     = new Button("I", "50px", "60px",  "white", "I");
+         Button buttonO     = new Button("O", "50px", "60px",  "white", "O");
+         Button buttonP     = new Button("P", "50px", "60px",  "white", "P");
+         Button buttonA     = new Button("A", "50px", "60px",  "white", "A");
+         Button buttonS     = new Button("S", "50px", "60px",  "white", "S");
+         Button buttonD     = new Button("D", "50px", "60px",  "white", "D");
+         Button buttonF     = new Button("F", "50px", "60px",  "white", "F");
+         Button buttonG     = new Button("G", "50px", "60px",  "white", "G");
+         Button buttonH     = new Button("H", "50px", "60px",  "white", "H");
+         Button buttonJ     = new Button("J", "50px", "60px",  "white", "J");
+         Button buttonK     = new Button("K", "50px", "60px",  "white", "K");
+         Button buttonL     = new Button("L", "50px", "60px",  "white", "L");
+         Button buttonEnter = new Button("enter", "70px", "60px",  "white", "Enter");
+         Button buttonZ     = new Button("Z", "50px", "60px",  "white", "Z");
+         Button buttonX     = new Button("X", "50px", "60px",  "white", "X");
+         Button buttonC     = new Button("C", "50px", "60px",  "white", "C");
+         Button buttonV     = new Button("V", "50px", "60px",  "white", "V");
+         Button buttonB     = new Button("B", "50px", "60px",  "white", "B");
+         Button buttonN     = new Button("N", "50px", "60px",  "white", "N");
+         Button buttonM     = new Button("M", "50px", "60px",  "white", "M");
+         Button buttonBksp  = new Button("backspace", "70px", "60px",  "white", "⬅");
            
          buttonList.Add(buttonQ);
          buttonList.Add(buttonW);
@@ -335,7 +330,17 @@ namespace src.Pages
             String[] lines = File.ReadAllLines(@path);
             foreach(String line in lines)
                if(line.ToUpper().Contains(currentWord))
-                  return true;
+               {  
+                  WordInstance newWord = new WordInstance(currentWord);
+                  if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)){
+                     newWord.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"/resources/ProfanityWordsEN.txt"));
+                  } else {
+                     newWord.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"\resources\ProfanityWordsEN.txt"));
+                  }
+                  return newWord.ProfanitySafe;
+                  //return true;
+               }
+                  
          }
          else
          {
@@ -391,7 +396,7 @@ namespace src.Pages
                   }
                }
              else
-               if(countInCurrent == 1 && countInGiven > 1)
+               if(countInGiven > 1 && countInCurrent == 1)
                   if(tileStates[k] == "correct")
                      tileStates[k] = "doubleGreen";
                   else if(tileStates[k] == "contained")
@@ -422,25 +427,26 @@ namespace src.Pages
          Console.WriteLine("Contained: " + string.Join(", ", this.ContainedLetters));
          Console.WriteLine("Double Yellows: " + string.Join(", ", this.DoubleYellowLetters));
          Console.WriteLine("Correct: " + string.Join(", ", this.CorrectLetters));
-         foreach (Button button in buttonList)
+         foreach (Button Button in buttonList)
          {
             foreach(String letter in this.MissingLetters)
-               if(letter == button.sId)
-                  button.State = "missing";
+               if(letter == Button.sId)
+                  Button.State = "missing";
             foreach(String letter in this.ContainedLetters)
-               if(letter == button.sId)
-                  button.State = "contained";
+               if(letter == Button.sId)
+                  Button.State = "contained";
             foreach(String letter in this.DoubleYellowLetters)
-               if(letter == button.sId)
-                  button.State = "doubleYellow";
+               if(letter == Button.sId)
+                  Button.State = "doubleYellow";
             foreach(String letter in this.CorrectLetters)
-               if(letter == button.sId)
-                  button.State = "correct";
+               if(letter == Button.sId)
+                  Button.State = "correct";
          }
 
       }
       public void ChangeKeyColour(String key, String state)
       {
+         
          if(state == "contained")
             if(this.ContainedLetters.Count == 0 || !this.ContainedLetters.Contains(key))
                this.ContainedLetters.Add(key);
@@ -462,13 +468,9 @@ namespace src.Pages
          }
          if(state == "missing")
          {
-            if(this.ContainedLetters.Count > 0 && this.ContainedLetters.Contains(key))
-               this.ContainedLetters.Remove(key);
-            if(this.DoubleYellowLetters.Count > 0 && this.DoubleYellowLetters.Contains(key))
-               this.DoubleYellowLetters.Remove(key);
-            if(this.CorrectLetters.Count > 0 && this.CorrectLetters.Contains(key))
-               this.CorrectLetters.Remove(key);
-            if(this.MissingLetters.Count == 0 || !this.MissingLetters.Contains(key))
+            if(!(this.ContainedLetters.Count > 0 && this.ContainedLetters.Contains(key)) && !(this.DoubleYellowLetters.Count > 0 
+            && this.DoubleYellowLetters.Contains(key)) && !(this.CorrectLetters.Count > 0 && this.CorrectLetters.Contains(key)) &&
+            this.MissingLetters.Count == 0 || !this.MissingLetters.Contains(key))
                this.MissingLetters.Add(key);
          }
       }
@@ -526,6 +528,23 @@ namespace src.Pages
          return false;
       }
 
+      private async void ThrowAlertAnimation()
+      {
+         int k = 1;
+         foreach(Tile tile in tileList)
+         {
+            if(tile.tileId == this.j*10+k)
+               tile.State = "alert";
+            k++;
+         }
+     
+         
+         await js.InvokeAsync<string>("GiveAlert", index.NumLetters, this.j);
+
+         StateHasChanged();
+      }
+
+
       private async void EnterEventHandler()
       {
          // form the word using the key of each tile
@@ -577,31 +596,38 @@ namespace src.Pages
                else
                {
                   //give inexistent word exception
-                  this.ClearRow(j);
+                  //this.ClearRow(j);
                   Console.WriteLine("Word does not exist!");
+                  ThrowAlertAnimation();
                   ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Word doesn't exist. ", Detail = "Try again.", Duration = 3000 });
                  // if we want to clear the row we can use this:
-                  await js.InvokeVoidAsync("shakeFunction");
+                  //await js.InvokeVoidAsync("shakeFunction");
                  
+                 
+                  // give inexistent word exception
+           
+                  // if we want to clear the row we can use this:
+                  // this.ClearRow(j);
                   // otherwise we don't do anything, just give the exception
                }
             }
             else
             {
-               //give incomplete word exception
+               ThrowAlertAnimation();
+               // give incomplete word exception
                Console.WriteLine("Incomplete word!");
             }     
          }
          else
          {
-            //give incomplete word exception
+            // give incomplete word exception
+            ThrowAlertAnimation();
             Console.WriteLine("Incomplete word!");
          }
       }
       
       private void AlphaKeyEventHandler(String key)
       {
-         Console.WriteLine(i + " " + j);
          foreach (Tile tile in tileList)
          {
             if (tile.tileId == j*10 + i)
@@ -666,9 +692,9 @@ namespace src.Pages
          }
          if(i == 1)
             BackspaceAllowed = false;
-         }
-         
+         }   
       }
+
       private void KeyboardEventHandler(KeyboardEventArgs args)
       {
          Console.WriteLine("Key Pressed is " + args.Key);
@@ -695,6 +721,17 @@ namespace src.Pages
             this.EnterEventHandler();
          else
             this.AlphaKeyEventHandler(key);
+      }
+
+      private void OnTimedEvent(object source, ElapsedEventArgs e)
+      {
+         int k = 1;
+         foreach(Tile tile in this.tileList)
+         {       
+            if(tile.tileId == this.j*10 + k)
+               tile.State = "default";
+            k++;
+         }
       }
 
    }

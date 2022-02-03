@@ -545,7 +545,7 @@ namespace src.Pages
       }
 
 
-      private async void EnterEventHandler()
+      private void EnterEventHandler()
       {
          // form the word using the key of each tile
          // check if word is in the corespondent word file

@@ -42,15 +42,23 @@
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>            
-     break;
+    break;
 
-     default:
+    case "alert":
+        <table class="incorrect" style="background-color:rgba(217,75,53, 0.7);">
+            <tr>
+                <td id=@Tile.tileId>@Tile.Letter</td>
+            </tr>
+        </table>
+    break;
+
+    default:
         <table style="background-color:#333">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>    
-     break;
+    break;
 
 }
 

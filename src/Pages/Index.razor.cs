@@ -526,7 +526,7 @@ namespace src.Pages
          return false;
       }
 
-      private void EnterEventHandler()
+      private async void EnterEventHandler()
       {
          // form the word using the key of each tile
          // check if word is in the corespondent word file
@@ -577,10 +577,12 @@ namespace src.Pages
                else
                {
                   //give inexistent word exception
-                  Console.WriteLine("Word does not exist!");
-                  ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Word does not exit", Detail = "Try again", Duration = 300000 });
-                 // if we want to clear the row we can use this:
                   this.ClearRow(j);
+                  Console.WriteLine("Word does not exist!");
+                  ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Word doesn't exist. ", Detail = "Try again.", Duration = 3000 });
+                 // if we want to clear the row we can use this:
+                  await js.InvokeVoidAsync("shakeFunction");
+                 
                   // otherwise we don't do anything, just give the exception
                }
             }

@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using Microsoft.JSInterop;
 using Radzen;
 using System.Timers;
+using Blazored.Modal.Services;
+using Blazored.Modal;
 
 namespace src.Pages
 {
@@ -139,6 +141,8 @@ namespace src.Pages
       [Parameter] public string LanguageString { get; set; }
 
       [Inject] private NotificationService NotificationService {get;set;}
+
+      [CascadingParameter] public IModalService Modal { get; set; }
 
      
       int NumLetters {set; get;} = 5;
@@ -520,12 +524,22 @@ namespace src.Pages
          if(won)
          {
             Console.WriteLine("Congrats! You have guessed the word!");
+            var parameters = new ModalParameters();
+            parameters.Add(nameof(GameWon.Title), "You Guessed The Word!");
+            string guess = "You Guessed The Word: " + index.CurrentGame.getWord().ToString().ToUpper();
+            parameters.Add(nameof(GameWon.Text), guess);
+            Modal.Show<GameWon>("", parameters);
             // show game won popup
             return true;
          }
          if(index.i == index.NumLetters && index.j == 6)
          {
             Console.WriteLine("The game has ended! You have not guessed the given word! The given word was: " + index.CurrentGame.getWord().ToString().ToUpper());
+            var parameters = new ModalParameters();
+            parameters.Add(nameof(GameWon.Title), "You Didn't Guess The Word!");
+            string guess = "The Given Word Was: " + index.CurrentGame.getWord().ToString().ToUpper();
+            parameters.Add(nameof(GameWon.Text), guess);
+            Modal.Show<GameWon>("", parameters);
             return true;
          }
          return false;

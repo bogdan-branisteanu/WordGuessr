@@ -63,3 +63,14 @@ a, .btn-link {
     content: "An error has occurred."
 }
 
+
+.blazored-modal {
+    display: block !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    border: transparent !important;
+    padding: 0rem !important;
+    
+}
+

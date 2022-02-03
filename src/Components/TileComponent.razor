@@ -5,7 +5,7 @@
 {
    
     case "contained":
-        <table style="background-color:rgba(251,196,0, .8);">
+        <table id="#@Tile.tileId" style="background-color:rgba(251,196,0, .8);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -13,7 +13,7 @@
     break;
 
     case "doubleGreen":
-        <table style="background: linear-gradient(45deg, #71ddf3 20%, rgb(4 170 109) 80%);">
+        <table id="#@Tile.tileId" style="background: linear-gradient(45deg, #71ddf3 20%, rgb(4 170 109) 80%);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -21,7 +21,7 @@
     break;
 
     case "doubleYellow":
-        <table style="background: linear-gradient(45deg, #71ddf3 20%, rgb(251 196 0 / 80%) 80%);">
+        <table id="#@Tile.tileId"  style="background: linear-gradient(45deg, #71ddf3 20%, rgb(251 196 0 / 80%) 80%);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -29,7 +29,7 @@
     break;
 
     case "missing":
-        <table style="background-color:rgba(0,0,0, .4); ">
+        <table id="#@Tile.tileId" style="background-color:rgba(0,0,0, .4);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -37,23 +37,15 @@
     break;
 
     case "correct":
-        <table style="background-color:rgba(4,170,109, 1);">
+        <table id="#@Tile.tileId" style="background-color:rgba(4,170,109, 1);">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
         </table>            
     break;
 
-    case "alert":
-        <table class="incorrect" style="background-color:rgba(217,75,53, 0.7);">
-            <tr>
-                <td id=@Tile.tileId>@Tile.Letter</td>
-            </tr>
-        </table>
-    break;
-
     default:
-        <table style="background-color:#333">
+        <table id="#@Tile.tileId" style="background-color:#333;">
             <tr>
                 <td id=@Tile.tileId>@Tile.Letter</td>
             </tr>
@@ -61,5 +53,9 @@
     break;
 
 }
+
+
+
+
 
 

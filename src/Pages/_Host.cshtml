@@ -10,13 +10,14 @@
 <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
 <script>
         function GiveAlert(numLetters, row, tiles) {
+          console.log("row:" + row);
             for(var i = 1; i <= numLetters; i++)
             {
                 
                 var id = row*10 + i;
                 console.log(id);
                 document.getElementById(id.toString()).style.backgroundColor = "#dc7562";
-                document.getElementById(id.toString()).classList.add("incorrect");
+                document.getElementById("#"+id.toString()).classList.add("incorrect");
             }
 
             var shakingElements = [];
@@ -99,7 +100,7 @@
             //The `angularShake` function
             function angularShake() {
               if (counter < numberOfShakes) {
-                console.log(tiltAngle);
+              
                 //Reset the element's rotation
                 element.style.transform = 'rotate(' + startAngle + 'deg)';
 
@@ -109,7 +110,7 @@
                 //Rotate the element left or right, depending on the direction,
                 //by an amount in radians that matches the magnitude
                 var angle = Number(magnitude * tiltAngle).toFixed(2);
-                console.log(angle);
+                
                 element.style.transform = 'rotate(' + angle + 'deg)';
                 counter += 1;
 
@@ -145,6 +146,7 @@
                     
                     var id = row*10 + i;
                     document.getElementById(id.toString()).style.backgroundColor = "#333";
+                    document.getElementById("#" + id.toString()).classList.remove("incorrect");
                 }
             }, 500);
         }
@@ -155,6 +157,7 @@
             document.documentElement.scrollTop = 0;
         }
 </script>
+
 
 <link rel="stylesheet" href="_content/Radzen.Blazor/css/default-base.css">
 
@@ -245,7 +248,7 @@
   //The `angularShake` function
   function angularShake() {
     if (counter < numberOfShakes) {
-      console.log(tiltAngle);
+     
       //Reset the element's rotation
       element.style.transform = 'rotate(' + startAngle + 'deg)';
 
@@ -255,7 +258,7 @@
       //Rotate the element left or right, depending on the direction,
       //by an amount in radians that matches the magnitude
       var angle = Number(magnitude * tiltAngle).toFixed(2);
-      console.log(angle);
+      
       element.style.transform = 'rotate(' + angle + 'deg)';
       counter += 1;
 

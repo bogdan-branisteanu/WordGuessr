@@ -1,13 +1,16 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using src.Data;
+using Radzen;
+using Blazored.Modal;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-
+builder.Services.AddScoped<NotificationService>();
+builder.Services.AddBlazoredModal();
 
 var app = builder.Build();
 

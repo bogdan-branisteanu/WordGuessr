@@ -23,35 +23,15 @@ input:focus{
 }
 
 
-
 .grid-container {
     display: grid;
     grid-column-gap: 1px;
    
 }
 
-.grid-item {
-   
-    width:80px;
-    
-}
-
 .game-container {
     display: flex;
     justify-content: center;
-}
-
-.keyboard-container {
-    display: flex;
-    justify-content: space-evenly;
-    
-}
-
-
-.keyboard-grid-container {
-    display: grid;
-    grid-column-gap: 1px;
-    grid-row-gap: 3px;
 }
 
 
@@ -65,5 +45,17 @@ input:focus{
     width: 70px;
     height:60px;
     border-radius: 12px;
+}
+
+.row{
+    display: inline;
+    --bs-gutter-x: 0.5rem;
+    margin-top: 2px;
+    height: 50px;
+}
+
+.keyboard{
+    width:500px;
+  
 }
 

@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Components;
 using src.Components;
 using System.Runtime.InteropServices;
 using Microsoft.JSInterop;
+using Radzen;
 using System.Timers;
+using Blazored.Modal.Services;
+using Blazored.Modal;
 
 namespace src.Pages
 {
@@ -136,6 +139,11 @@ namespace src.Pages
       [Parameter] public string NumLettersString { get; set; }
 
       [Parameter] public string LanguageString { get; set; }
+
+      [Inject] private NotificationService NotificationService {get;set;}
+
+      [CascadingParameter] public IModalService Modal { get; set; }
+
      
       int NumLetters {set; get;} = 5;
       Game CurrentGame;
@@ -146,6 +154,8 @@ namespace src.Pages
       List<string> ContainedLetters = new List<string>();
       List<string> DoubleGreenLetters = new List<string>();
       List<string> DoubleYellowLetters = new List<string>();
+
+      [Inject] NavigationManager NavigationManager { get; set; }
       public void runGame()
       {
          Console.WriteLine("index.i got here!");
@@ -170,6 +180,11 @@ namespace src.Pages
         List<Tile> tileList = new List<Tile>();
 
         List<Button> buttonList = new List<Button>();
+
+      public async Task lostFocus(){
+         if(NavigationManager.Uri.Contains("game"))
+            await inputDiv.FocusAsync();
+      }
 
       public void setNumLetters(int numLetters)
       {
@@ -199,34 +214,34 @@ namespace src.Pages
                }  
             }
          }
-         Button buttonQ     = new Button("Q", "50px", "60px",  "white", "Q");
-         Button buttonW     = new Button("W", "50px", "60px",  "white", "W");
-         Button buttonE     = new Button("E", "50px", "60px",  "white", "E");
-         Button buttonR     = new Button("R", "50px", "60px",  "white", "R");
-         Button buttonT     = new Button("T", "50px", "60px",  "white", "T");
-         Button buttonY     = new Button("Y", "50px", "60px",  "white", "Y");
-         Button buttonU     = new Button("U", "50px", "60px",  "white", "U");
-         Button buttonI     = new Button("I", "50px", "60px",  "white", "I");
-         Button buttonO     = new Button("O", "50px", "60px",  "white", "O");
-         Button buttonP     = new Button("P", "50px", "60px",  "white", "P");
-         Button buttonA     = new Button("A", "50px", "60px",  "white", "A");
-         Button buttonS     = new Button("S", "50px", "60px",  "white", "S");
-         Button buttonD     = new Button("D", "50px", "60px",  "white", "D");
-         Button buttonF     = new Button("F", "50px", "60px",  "white", "F");
-         Button buttonG     = new Button("G", "50px", "60px",  "white", "G");
-         Button buttonH     = new Button("H", "50px", "60px",  "white", "H");
-         Button buttonJ     = new Button("J", "50px", "60px",  "white", "J");
-         Button buttonK     = new Button("K", "50px", "60px",  "white", "K");
-         Button buttonL     = new Button("L", "50px", "60px",  "white", "L");
-         Button buttonEnter = new Button("enter", "70px", "60px",  "white", "Enter");
-         Button buttonZ     = new Button("Z", "50px", "60px",  "white", "Z");
-         Button buttonX     = new Button("X", "50px", "60px",  "white", "X");
-         Button buttonC     = new Button("C", "50px", "60px",  "white", "C");
-         Button buttonV     = new Button("V", "50px", "60px",  "white", "V");
-         Button buttonB     = new Button("B", "50px", "60px",  "white", "B");
-         Button buttonN     = new Button("N", "50px", "60px",  "white", "N");
-         Button buttonM     = new Button("M", "50px", "60px",  "white", "M");
-         Button buttonBksp  = new Button("backspace", "70px", "60px",  "white", "⬅");
+         Button buttonQ     = new Button("Q", "40px", "50px",  "white", "Q");
+         Button buttonW     = new Button("W", "40px", "50px",  "white", "W");
+         Button buttonE     = new Button("E", "40px", "50px",  "white", "E");
+         Button buttonR     = new Button("R", "40px", "50px",  "white", "R");
+         Button buttonT     = new Button("T", "40px", "50px",  "white", "T");
+         Button buttonY     = new Button("Y", "40px", "50px",  "white", "Y");
+         Button buttonU     = new Button("U", "40px", "50px",  "white", "U");
+         Button buttonI     = new Button("I", "40px", "50px",  "white", "I");
+         Button buttonO     = new Button("O", "40px", "50px",  "white", "O");
+         Button buttonP     = new Button("P", "40px", "50px",  "white", "P");
+         Button buttonA     = new Button("A", "40px", "50px",  "white", "A");
+         Button buttonS     = new Button("S", "40px", "50px",  "white", "S");
+         Button buttonD     = new Button("D", "40px", "50px",  "white", "D");
+         Button buttonF     = new Button("F", "40px", "50px",  "white", "F");
+         Button buttonG     = new Button("G", "40px", "50px",  "white", "G");
+         Button buttonH     = new Button("H", "40px", "50px",  "white", "H");
+         Button buttonJ     = new Button("J", "40px", "50px",  "white", "J");
+         Button buttonK     = new Button("K", "40px", "50px",  "white", "K");
+         Button buttonL     = new Button("L", "40px", "50px",  "white", "L");
+         Button buttonEnter = new Button("enter", "60px", "50px",  "white", "Enter");
+         Button buttonZ     = new Button("Z", "40px", "50px",  "white", "Z");
+         Button buttonX     = new Button("X", "40px", "50px",  "white", "X");
+         Button buttonC     = new Button("C", "40px", "50px",  "white", "C");
+         Button buttonV     = new Button("V", "40px", "50px",  "white", "V");
+         Button buttonB     = new Button("B", "40px", "50px",  "white", "B");
+         Button buttonN     = new Button("N", "40px", "50px",  "white", "N");
+         Button buttonM     = new Button("M", "40px", "50px",  "white", "M");
+         Button buttonBksp  = new Button("backspace", "60px", "50px",  "white", "⬅");
            
          buttonList.Add(buttonQ);
          buttonList.Add(buttonW);
@@ -260,6 +275,11 @@ namespace src.Pages
          StateHasChanged();
       } 
 
+      void ShowNotification(NotificationMessage message)
+      {
+            NotificationService.Notify(message);
+      }
+
       protected override async Task OnAfterRenderAsync(bool firstRender)
       {
 
@@ -274,6 +294,9 @@ namespace src.Pages
          }
 
          await js.InvokeVoidAsync("OnScrollEvent");
+
+       
+              
         
       }
 
@@ -322,13 +345,8 @@ namespace src.Pages
             foreach(String line in lines)
                if(line.ToUpper().Contains(currentWord))
                {  
-                  WordInstance newWord = new WordInstance(currentWord);
-                  if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)){
-                     newWord.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"/resources/ProfanityWordsEN.txt"));
-                  } else {
-                     newWord.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"\resources\ProfanityWordsEN.txt"));
-                  }
-                  return newWord.ProfanitySafe;
+                  
+                  return true;
                   //return true;
                }
                   
@@ -508,12 +526,22 @@ namespace src.Pages
          if(won)
          {
             Console.WriteLine("Congrats! You have guessed the word!");
+            var parameters = new ModalParameters();
+            parameters.Add(nameof(GameWon.Title), "You Guessed The Word!");
+            string guess = "You Guessed The Word: " + index.CurrentGame.getWord().ToString().ToUpper();
+            parameters.Add(nameof(GameWon.Text), guess);
+            Modal.Show<GameWon>("", parameters);
             // show game won popup
             return true;
          }
          if(index.i == index.NumLetters && index.j == 6)
          {
             Console.WriteLine("The game has ended! You have not guessed the given word! The given word was: " + index.CurrentGame.getWord().ToString().ToUpper());
+            var parameters = new ModalParameters();
+            parameters.Add(nameof(GameWon.Title), "You Didn't Guess The Word!");
+            string guess = "The Given Word Was: " + index.CurrentGame.getWord().ToString().ToUpper();
+            parameters.Add(nameof(GameWon.Text), guess);
+            Modal.Show<GameWon>("", parameters);
             return true;
          }
          return false;
@@ -523,7 +551,9 @@ namespace src.Pages
       {
          // Console.WriteLine("Makin it red when j is " + index.j);
          await js.InvokeAsync<string>("GiveAlert", index.NumLetters, index.j, tileList);
-         int k = 1;
+        
+
+         StateHasChanged();
       }
 
 
@@ -577,9 +607,17 @@ namespace src.Pages
                }
                else
                {
-                  ThrowAlertAnimation();
-                  // give inexistent word exception
+                  //give inexistent word exception
+                  //this.ClearRow(j);
                   Console.WriteLine("Word does not exist!");
+                  ThrowAlertAnimation();
+                  ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Word doesn't exist. ", Detail = "Try again.", Duration = 3000 });
+                 // if we want to clear the row we can use this:
+                  //await js.InvokeVoidAsync("shakeFunction");
+                 
+                 
+                  // give inexistent word exception
+           
                   // if we want to clear the row we can use this:
                   // this.ClearRow(index.j);
                   // otherwise we don't do anything, just give the exception
@@ -590,6 +628,8 @@ namespace src.Pages
                ThrowAlertAnimation();
                // give incomplete word exception
                Console.WriteLine("Incomplete word!");
+               ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Incomplete word!", Detail = "Try again.", Duration = 3000 });
+                
             }     
          }
          else
@@ -597,6 +637,8 @@ namespace src.Pages
             // give incomplete word exception
             ThrowAlertAnimation();
             Console.WriteLine("Incomplete word!");
+            ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Incomplete word!", Detail = "Try again.", Duration = 3000 });
+                
          }
       }
       

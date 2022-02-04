@@ -556,7 +556,13 @@ namespace src.Pages
          StateHasChanged();
       }
 
-
+      private void ChangeColorblind(object colorblind)
+      {
+         foreach(Tile tile in tileList)
+            tile.Colorblind = (bool)colorblind;
+         foreach(Button button in buttonList)
+            button.Colorblind = (bool)colorblind;
+      }
       private void EnterEventHandler()
       {
          // form the word using the key of each tile

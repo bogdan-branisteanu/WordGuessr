@@ -14,7 +14,8 @@ namespace src.Components{
 
         public string State { get; set; }
 
-        //TODO: Api for dictionary
+        public Boolean Colorblind { get; set; } = false;
+
         //TODO: Check input for profanity
 
         public Button(string sId, string width, string height, string Color, string Text, string Icon){

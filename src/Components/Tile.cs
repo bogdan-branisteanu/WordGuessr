@@ -4,7 +4,8 @@ namespace src.Components{
         public int tileId { get; set; }
         public string State { get; set; }
         public string Letter { get; set; } = "";
- 
+
+        public Boolean Colorblind { get; set; } = false;
 
     }
 

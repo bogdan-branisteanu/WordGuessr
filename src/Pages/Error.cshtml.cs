@@ -8,7 +8,10 @@ namespace src.Pages;
 [IgnoreAntiforgeryToken]
 public class ErrorModel : PageModel
 {
+    #nullable enable
     public string? RequestId { get; set; }
+
+    #nullable disable
 
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 

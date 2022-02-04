@@ -21,11 +21,9 @@
 
 
 @code{
-    [CascadingParameter]
-    BlazoredModalInstance BlazoredModal { get; set; }
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
     [Parameter]public string Title { get; set; }
     [Parameter]public string Text { get; set;}
-
     [Inject] private NavigationManager NavigationManager { get; set; }
 
     void GoHome(){

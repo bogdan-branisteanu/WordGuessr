@@ -1,206 +1,47 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
-using src.Components;
 using System.Runtime.InteropServices;
 using Microsoft.JSInterop;
-using Radzen;
-using System.Timers;
 using Blazored.Modal.Services;
 using Blazored.Modal;
+using System.Timers;
+using src.Components;
+using src.Classes;
+using Radzen;
+
 
 namespace src.Pages
 {
    // string pathProfanity = @"/resources/profanityWords.txt";
-   public class WordInstance
-   {
-
-      private readonly IJSRuntime js;
-
-      // Constructor method that take the word itself as a parameter
-      public WordInstance(string word)
-      {
-         Word = word;
-      }
-      public string Word {set; get;}
-      
-      public override string ToString()
-      {
-        return Word;
-      }
-
-      public Boolean ProfanitySafe {set; get;}
-
-      public void checkProfanity(string path)
-      {
-         if(File.Exists(path))
-         {
-            string[] lines = File.ReadAllLines(path);
-            this.ProfanitySafe = true;
-            foreach(string line in lines) if (this.ProfanitySafe == true)
-               this.ProfanitySafe = !(this.Word.Equals(line.ToUpper()));
-            
-         }
-         else Console.WriteLine("Specified path for " + path + " does not exist!");
-      }
-   }
-
-   public class Game{
-      
-      public Game(int numLetters)
-      {
-        NumLetters = numLetters;
-      }
-      public int NumLetters { set; get; }
-      public WordInstance Word { set; get; }
-      public void chooseWord()
-      {
-         string Path;
-         switch(this.NumLetters)
-         {
-            case 0:
-               Path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\CommonWordsEN.txt");
-                 if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
-               
-               Path = Path.Replace("\\", "/");
-            }
-            break;
-            case 3:
-               Path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\3LetterCommonWordsEN.txt");
-               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
-               Path = Path.Replace("\\", "/");
-            }
-            break;
-            case 4:
-               Path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\4LetterCommonWordsEN.txt");
-               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
-               Path = Path.Replace("\\", "/");
-            }
-            break;
-            case 5:
-               Path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\5LetterCommonWordsEN.txt");
-               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
-               Path = Path.Replace("\\", "/");
-            }
-            break;
-            case 6:
-               Path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\6LetterCommonWordsEN.txt");
-               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
-               Path = Path.Replace("\\", "/");
-            }
-            break;
-            case 7:
-               Path = String.Concat(Directory.GetCurrentDirectory(), @"\Resources\7LetterCommonWordsEN.txt");
-               if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
-               Path = Path.Replace("\\", "/");
-            }
-            break;
-            default:
-               Path = "invalid";
-            break;
-
-          
-         }
-         if(File.Exists(Path))
-         {
-            string[] lines = File.ReadAllLines(@Path);
-            Random rdn = new Random();
-            int index = rdn.Next(0, lines.Length);
-            Console.WriteLine("No of lines: " + lines.Length + " index: " + index);
-            this.Word = new WordInstance(lines[index]);
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)){
-               this.Word.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"/resources/ProfanityWordsEN.txt"));
-            } else {
-               this.Word.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"\resources\ProfanityWordsEN.txt"));
-            }
-            while(this.Word.ProfanitySafe == false)
-            {
-               index = rdn.Next(0, lines.Length);
-               this.Word = new WordInstance(lines[index]);
-               
-               if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)){
-                  this.Word.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"/resources/ProfanityWordsEN.txt"));
-               } else {
-                  this.Word.checkProfanity(String.Concat(Directory.GetCurrentDirectory(), @"\resources\ProfanityWordsEN.txt"));
-               }
-            }
-         }
-         else Console.WriteLine("Specified path for " + @Path + " does not exist!");
-      }
-
-      public WordInstance getWord()
-      {
-         return this.Word;
-      }
-   }
-   
-public class WindowDimension{
-   public int Width { get; set; }
-   public int Height { get; set; }
-}
    public partial class Index{
       
-
-      [Parameter] public string NumLettersString { get; set; }
-
-      [Parameter] public string LanguageString { get; set; }
-
-      [Inject] private NotificationService NotificationService {get;set;}
-
       [CascadingParameter] public IModalService Modal { get; set; }
+      [Parameter] public string NumLettersString { get; set; }
+      [Parameter] public string LanguageString { get; set; }
+      [Inject] private NotificationService NotificationService {get;set;}
+      [Inject] NavigationManager NavigationManager { get; set; }
 
-     
-      int NumLetters {set; get;} = 5;
-      Game CurrentGame;
-      Index index;
-      Boolean BackspaceAllowed = false;
       List<string> MissingLetters = new List<string>();
       List<string> CorrectLetters = new List<string>();
       List<string> ContainedLetters = new List<string>();
       List<string> DoubleGreenLetters = new List<string>();
       List<string> DoubleYellowLetters = new List<string>();
+      List<Tile> tileList = new List<Tile>();
+      List<Button> buttonList = new List<Button>();
 
-      [Inject] NavigationManager NavigationManager { get; set; }
-      public void runGame()
-      {
-         Console.WriteLine("index.i got here!");
-         if(this.NumLetters == 0 || this.NumLetters >= 3 && this.NumLetters <= 7)
-         {
-            CurrentGame = new Game(this.NumLetters);
-            CurrentGame.chooseWord();
-            Console.WriteLine(CurrentGame);
-            Console.WriteLine(this.CurrentGame.getWord());
-         }
-         else
-         {
-            Console.WriteLine("Invalid number of letters: " + this.NumLetters);
-            System.Environment.Exit(0);
-         }
-      }
+      public int NumLetters {set; get;} = 5;
+      public int Width { get; set; }
+      private ElementReference inputDiv;
+      Boolean BackspaceAllowed = false;
+      int i = 1;
+      int j = 1;
 
-        int i = 1;
-        int j = 1;
-        private ElementReference inputDiv;
-
-        List<Tile> tileList = new List<Tile>();
-
-        List<Button> buttonList = new List<Button>();
-
-        public int Width { get; set; }
+      Game CurrentGame;
+      Index index;
+      
         
 
-      public async Task lostFocus(){
-         if(NavigationManager.Uri.Contains("game"))
-            await inputDiv.FocusAsync();
-      }
-
-      public void setNumLetters(int numLetters)
-      {
-         this.NumLetters = numLetters;
-      }
-
-
-      protected override async Task OnInitializedAsync()
+      protected override void OnInitialized()
       {
          NumLetters = Int32.Parse(NumLettersString);
          if(NumLetters == 0)
@@ -284,11 +125,6 @@ public class WindowDimension{
          StateHasChanged();
       } 
 
-      void ShowNotification(NotificationMessage message)
-      {
-            NotificationService.Notify(message);
-      }
-
       protected override async Task OnAfterRenderAsync(bool firstRender)
       {
 
@@ -307,16 +143,46 @@ public class WindowDimension{
         
          }
 
-        //await js.InvokeVoidAsync("OnScrollEvent");
+        await js.InvokeVoidAsync("OnScrollEvent");
        
-
         StateHasChanged();
 
-       
-              
-        
       }
 
+      public void runGame()
+      {
+         Console.WriteLine("index.i got here!");
+         if(this.NumLetters == 0 || this.NumLetters >= 3 && this.NumLetters <= 7)
+         {
+            CurrentGame = new Game(this.NumLetters);
+            CurrentGame.chooseWord();
+            Console.WriteLine(CurrentGame);
+            Console.WriteLine(this.CurrentGame.getWord());
+         }
+         else
+         {
+            Console.WriteLine("Invalid number of letters: " + this.NumLetters);
+            System.Environment.Exit(0); //TODO: Maybe add 404 page
+         }
+      }
+
+      public async Task lostFocus()
+      {
+         if(NavigationManager.Uri.Contains("game"))
+            await inputDiv.FocusAsync();
+      }
+
+      void ShowNotification(NotificationMessage message)
+      {
+            NotificationService.Notify(message);
+      }
+
+      public void setNumLetters(int numLetters)
+      {
+         this.NumLetters = numLetters;
+      }
+     
+  
       public Boolean CheckWordIfExists(String currentWord)
       {
          String path;
@@ -431,6 +297,15 @@ public class WindowDimension{
          }
       }
            
+      private async void ThrowAlertAnimation()
+      {
+         // Console.WriteLine("Makin it red when j is " + index.j);
+         await js.InvokeAsync<string>("GiveAlert", index.NumLetters, index.j, tileList);
+        
+
+         StateHasChanged();
+      }
+
 
       public void ClearRow(int row)
       {
@@ -544,10 +419,14 @@ public class WindowDimension{
          {
             Console.WriteLine("Congrats! You have guessed the word!");
             var parameters = new ModalParameters();
-            parameters.Add(nameof(GameWon.Title), "You Guessed The Word!");
+            parameters.Add(nameof(GameModal.Title), "You Guessed The Word!");
             string guess = "You Guessed The Word: " + index.CurrentGame.getWord().ToString().ToUpper();
-            parameters.Add(nameof(GameWon.Text), guess);
-            Modal.Show<GameWon>("", parameters);
+            parameters.Add(nameof(GameModal.Text), guess);
+            var options = new ModalOptions() 
+            { 
+                  Animation = ModalAnimation.FadeInOut(1)
+            };
+            Modal.Show<GameModal>("", parameters, options);
             // show game won popup
             return true;
          }
@@ -555,24 +434,18 @@ public class WindowDimension{
          {
             Console.WriteLine("The game has ended! You have not guessed the given word! The given word was: " + index.CurrentGame.getWord().ToString().ToUpper());
             var parameters = new ModalParameters();
-            parameters.Add(nameof(GameWon.Title), "You Didn't Guess The Word!");
+            parameters.Add(nameof(GameModal.Title), "You Didn't Guess The Word!");
             string guess = "The Given Word Was: " + index.CurrentGame.getWord().ToString().ToUpper();
-            parameters.Add(nameof(GameWon.Text), guess);
-            Modal.Show<GameWon>("", parameters);
+            parameters.Add(nameof(GameModal.Text), guess);
+            var options = new ModalOptions() 
+            { 
+                  Animation = ModalAnimation.FadeInOut(1)
+            };
+            Modal.Show<GameModal>("", parameters, options);
             return true;
          }
          return false;
       }
-
-      private async void ThrowAlertAnimation()
-      {
-         // Console.WriteLine("Makin it red when j is " + index.j);
-         await js.InvokeAsync<string>("GiveAlert", index.NumLetters, index.j, tileList);
-        
-
-         StateHasChanged();
-      }
-
 
       private void EnterEventHandler()
       {

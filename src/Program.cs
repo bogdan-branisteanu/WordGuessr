@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using src.Data;
 using Radzen;
 using Blazored.Modal;
 

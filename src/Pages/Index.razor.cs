@@ -300,13 +300,15 @@ public class WindowDimension{
             this.index.runGame();
             this.index.i = 1;
             this.index.j = 1;
-         }
-
-        await js.InvokeVoidAsync("OnScrollEvent");
-        var dimension = await js.InvokeAsync<WindowDimension>("getWindowDimensions");
-        Width = dimension.Width;
+            var dimension = await js.InvokeAsync<WindowDimension>("getWindowDimensions");
+            Console.WriteLine("Width");
+            Width = dimension.Width;
 
         
+         }
+
+        //await js.InvokeVoidAsync("OnScrollEvent");
+       
 
         StateHasChanged();
 
@@ -626,7 +628,12 @@ public class WindowDimension{
                   //this.ClearRow(j);
                   Console.WriteLine("Word does not exist!");
                   ThrowAlertAnimation();
-                  ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Word doesn't exist. ", Detail = "Try again.", Duration = 3000 });
+                  if(Width > 700){
+                     ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Word doesn't exist. ", Detail = "Try again.", Duration = 3000 });
+                  }else{
+                     ShowNotification(new NotificationMessage { Style = "position: absolute; left: -77vw; top:-15vw; font-size:10px !important; width:100px !important; min-width: 220px; width:221px;", Severity = NotificationSeverity.Error, Summary = "Word doesn't exist. ", Detail = "Try again.", Duration = 3000 });
+               
+                  }
                  // if we want to clear the row we can use this:
                   //await js.InvokeVoidAsync("shakeFunction");
                  
@@ -643,8 +650,12 @@ public class WindowDimension{
                ThrowAlertAnimation();
                // give incomplete word exception
                Console.WriteLine("Incomplete word!");
-               ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Incomplete word!", Detail = "Try again.", Duration = 3000 });
-                
+               if(Width > 700){
+                  ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Incomplete word!", Detail = "Try again.", Duration = 3000 });
+               }else{
+                  ShowNotification(new NotificationMessage { Style = "position: absolute; left: -77vw; top:-15vw; font-size:10px !important; width:100px !important; min-width: 220px; width:221px;", Severity = NotificationSeverity.Error, Summary = "Word doesn't exist. ", Detail = "Try again.", Duration = 3000 });
+            
+               }
             }     
          }
          else
@@ -652,8 +663,12 @@ public class WindowDimension{
             // give incomplete word exception
             ThrowAlertAnimation();
             Console.WriteLine("Incomplete word!");
-            ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Incomplete word!", Detail = "Try again.", Duration = 3000 });
-                
+            if(Width > 700){
+               ShowNotification(new NotificationMessage { Style = "position: absolute; left: -59vw; top:-3vw;", Severity = NotificationSeverity.Error, Summary = "Incomplete word!", Detail = "Try again.", Duration = 3000 });
+            }else{
+               ShowNotification(new NotificationMessage { Style = "position: absolute; left: -77vw; top:-15vw; font-size:10px !important; width:100px !important; min-width: 220px; width:221px;", Severity = NotificationSeverity.Error, Summary = "Word doesn't exist. ", Detail = "Try again.", Duration = 3000 });
+            
+            }
          }
       }
       

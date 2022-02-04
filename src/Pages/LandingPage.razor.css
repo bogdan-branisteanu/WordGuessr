@@ -16,3 +16,22 @@
 .row{
     justify-content: space-evenly;
 }
+
+@media only screen and (max-width: 700px) {
+    .play-button{
+        width: 50px;
+        height:36;
+        border-radius: 8px;
+        font-size: 15px;
+        background-color:rgba(4,170,109, 1);;
+        color: white;
+        margin-top: 10vw !important;
+    }
+    
+    .landingText{
+        font-size:10px !important;
+    }
+    .form-control{
+        font-size:10px !important;
+    }
+}

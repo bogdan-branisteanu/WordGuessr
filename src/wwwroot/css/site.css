@@ -83,11 +83,11 @@ a, .btn-link {
 
     .mainTitle{
         font-size: 20px !important;
-        margin-top: 2vw !important;
+        margin-top: 4vw !important;
     }
 
     .keyboard{
-        width: 274px !important;
+        width: 225px !important;
         display:flex !important;
         justify-content: center !important;
         flex-wrap: wrap !important;
@@ -97,10 +97,14 @@ a, .btn-link {
         height:35px !important;
     }
 
+    .rz-growl-item{
+        padding:0.1rem 1.25rem !important;
+    }
+
    
    
     
-    /*TODO: Radzen Notification, check out wtf is up with the tables td and fix keyboard, grid layout 
+    /*TODO: Radzen Notification, Modal, Contact page, Home page
 }
 
 

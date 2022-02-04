@@ -1,0 +1,30 @@
+<div class="modal fade show d-block" tabindex="-1" role="dialog">
+    <div class="modal-backdrop fade show"></div>
+     <div class="modal-dialog" style="z-index: 1050; width: 300px;">
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <h5 class="modal-title" style="text-align: center;">@Title</h5>
+                    <button type="button" class="close" @onclick="Close" >X</button>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                   <h>@Text</h>
+                   <div class="container">
+                       @*Settings go here*@
+                   </div>
+                </div>
+               
+            </div>
+        </div>
+</div>
+
+@code{
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+    [Parameter]public string Title { get; set; }
+    [Parameter]public string Text { get; set;}
+    [Inject] private NavigationManager NavigationManager { get; set; }
+
+    async Task Close() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
+
+   
+   
+}

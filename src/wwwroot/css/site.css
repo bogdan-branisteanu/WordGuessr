@@ -75,15 +75,9 @@ a, .btn-link {
 }
 
 @media only screen and (max-width: 700px) {
-    
-    .enter-button, .backspace-button{
-        width: 30px !important;
-        height:20px !important;
-        border-radius: 4px !important;
-    }
     .buttonDiv{
         width: 20px !important;
-        height: 30px !important;
+        height: 32px !important;
     }
    
 
@@ -93,8 +87,19 @@ a, .btn-link {
     }
 
     .keyboard{
-        width: 300px !important;
+        width: 274px !important;
+        display:flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
     }
+
+    .row{
+        height:35px !important;
+    }
+
+   
+   
+    
     /*TODO: Radzen Notification, check out wtf is up with the tables td and fix keyboard, grid layout 
 }
 

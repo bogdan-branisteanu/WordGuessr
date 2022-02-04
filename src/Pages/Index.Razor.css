@@ -41,21 +41,18 @@ input:focus{
     border-radius: 12px;
 }
 
-.enter-button, .backspace-button{
-    width: 70px;
-    height:60px;
-    border-radius: 12px;
-}
 
 .row{
     display: inline;
-    --bs-gutter-x: 0.5rem;
+    --bs-gutter-x: 0.1rem;
     margin-top: 2px;
     height: 50px;
 }
 
 .keyboard{
     width:500px;
-  
+    display:flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
 }
 

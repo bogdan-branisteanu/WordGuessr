@@ -133,6 +133,11 @@ namespace src.Pages
          return this.Word;
       }
    }
+   
+public class WindowDimension{
+   public int Width { get; set; }
+   public int Height { get; set; }
+}
    public partial class Index{
       
 
@@ -180,6 +185,9 @@ namespace src.Pages
         List<Tile> tileList = new List<Tile>();
 
         List<Button> buttonList = new List<Button>();
+
+        public int Width { get; set; }
+        
 
       public async Task lostFocus(){
          if(NavigationManager.Uri.Contains("game"))
@@ -242,7 +250,8 @@ namespace src.Pages
          Button buttonN     = new Button("N", "40px", "50px",  "white", "N");
          Button buttonM     = new Button("M", "40px", "50px",  "white", "M");
          Button buttonBksp  = new Button("backspace", "60px", "50px",  "white", "⬅");
-           
+
+      
          buttonList.Add(buttonQ);
          buttonList.Add(buttonW);
          buttonList.Add(buttonE);
@@ -293,7 +302,13 @@ namespace src.Pages
             this.index.j = 1;
          }
 
-         await js.InvokeVoidAsync("OnScrollEvent");
+        await js.InvokeVoidAsync("OnScrollEvent");
+        var dimension = await js.InvokeAsync<WindowDimension>("getWindowDimensions");
+        Width = dimension.Width;
+
+        
+
+        StateHasChanged();
 
        
               

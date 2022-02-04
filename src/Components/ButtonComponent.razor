@@ -23,8 +23,19 @@
      break;
 
      default:
-     <button class="buttonClass" id=@Button.sId  style="margin-top: 3px; width: @Button.width; height: @Button.height; border-radius: 12px; background-color:@Button.Color" >
-     @Button.Text </button>
+
+     if(@Button.sId == "enter"){
+          <button class="enterButton" id=@Button.sId  style="margin-top: 3px; width: @Button.width; height: @Button.height; border-radius: 12px; background-color:@Button.Color" >
+          @Button.Text </button>
+     
+     }else if(@Button.sId == "backspace"){
+          <button class="backspaceButton" id=@Button.sId  style="margin-top: 3px; width: @Button.width; height: @Button.height; border-radius: 12px; background-color:@Button.Color" >
+          @Button.Text </button>
+     
+     }else{
+          <button class="buttonClass" id=@Button.sId  style="margin-top: 3px; width: @Button.width; height: @Button.height; border-radius: 12px; background-color:@Button.Color" >
+          @Button.Text </button>
+     }
      break;
 
 }

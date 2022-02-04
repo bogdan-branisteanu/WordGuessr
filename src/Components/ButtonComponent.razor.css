@@ -5,4 +5,17 @@
         border-radius: 4px !important;
         font-size: 8px;
     }
+    .enterButton{
+        width: 35px !important;
+        height:30px !important;
+        border-radius: 4px !important;
+        font-size: 8px;
+    }
+    .backspaceButton{
+        width: 35px !important;
+        height:30px !important;
+        border-radius: 4px !important;
+        font-size: 8px;
+    }
+  
 }

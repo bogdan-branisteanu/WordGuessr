@@ -157,6 +157,14 @@
             document.documentElement.scrollTop = 0;
         }
 </script>
+<script> 
+    window.getWindowDimensions = function () {
+        return {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+    }; 
+</script>
 
 
 <link rel="stylesheet" href="_content/Radzen.Blazor/css/default-base.css">

@@ -131,19 +131,21 @@ namespace src.Pages
          if (firstRender)
          {
             await inputDiv.FocusAsync();
+            await js.InvokeVoidAsync("OnScrollEvent");
+
             this.index = new Index(); 
             this.index.setNumLetters(NumLetters);
             this.index.runGame();
             this.index.i = 1;
             this.index.j = 1;
+
             var dimension = await js.InvokeAsync<WindowDimension>("getWindowDimensions");
-            Console.WriteLine("Width");
             Width = dimension.Width;
 
         
          }
 
-        await js.InvokeVoidAsync("OnScrollEvent");
+        
        
         StateHasChanged();
 

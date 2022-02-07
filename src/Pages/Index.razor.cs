@@ -41,8 +41,11 @@ namespace src.Pages
       
         
 
-      protected override void OnInitialized()
+      protected override async void OnInitialized()
       {
+         var dimension = await js.InvokeAsync<WindowDimension>("getWindowDimensions");
+         Width = dimension.Width;
+
          NumLetters = Int32.Parse(NumLettersString);
          if(NumLetters == 0)
          {
@@ -139,8 +142,7 @@ namespace src.Pages
             this.index.i = 1;
             this.index.j = 1;
 
-            var dimension = await js.InvokeAsync<WindowDimension>("getWindowDimensions");
-            Width = dimension.Width;
+         
 
         
          }

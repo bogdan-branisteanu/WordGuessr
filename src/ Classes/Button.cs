@@ -14,6 +14,10 @@ namespace src.Components{
 
         public string State { get; set; }
 
+        public Boolean Colorblind { get; set; } = false;
+
+        //TODO: Check input for profanity
+
         public Button(string sId, string width, string height, string Color, string Text, string Icon){
             this.sId    = sId;
             this.width  = width;

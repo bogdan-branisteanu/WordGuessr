@@ -12,7 +12,6 @@
 
 <script>
         function GiveAlert(numLetters, row, tiles) {
-          console.log("row:" + row);
             for(var i = 1; i <= numLetters; i++)
             {
                 
@@ -21,6 +20,7 @@
                 document.getElementById(id.toString()).style.backgroundColor = "#dc7562";
                 document.getElementById("#"+id.toString()).classList.add("incorrect");
             }
+            setTimeout(() => {
 
             var shakingElements = [];
 
@@ -140,7 +140,7 @@
           for (var i = 0; i < elements.length; i++) {
               shake(elements.item(i), 7, true);
           }
-
+          }, 100);
 
             setTimeout(() => {
                 for(var i = 1; i <= numLetters; i++)
@@ -150,7 +150,7 @@
                     document.getElementById(id.toString()).style.backgroundColor = "#333";
                     document.getElementById("#" + id.toString()).classList.remove("incorrect");
                 }
-            }, 500);
+            }, 350);
         }
 </script>
 

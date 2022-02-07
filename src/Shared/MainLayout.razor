@@ -1,6 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Components
+@using src.Pages;
 
 <PageTitle>src</PageTitle>
 
@@ -13,6 +14,7 @@
             <ul>
                 <li><a class="active" href="/">Home</a></li>
                 <li style="float:right"><a class="active" href="/contact">Contact</a></li>
+                <button style="float:right" @onclick="settingsClick">Settings</button>
     
                 <center>      
                 <h1 class="mainTitle" style="color: white; font-size:36px">Word Guesser</h1>  
@@ -26,3 +28,13 @@
     </main>
 </div>
 
+@code{
+    [CascadingParameter] public IModalService Modal { get; set; }
+    public void settingsClick(){
+        var options = new ModalOptions() 
+        { 
+                Animation = ModalAnimation.FadeInOut(1)
+        };
+        Modal.Show<SettingsModal>("", options);
+    }
+}

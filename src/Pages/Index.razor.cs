@@ -451,6 +451,22 @@ namespace src.Pages
          return false;
       }
 
+      private async void ThrowAlertAnimation()
+      {
+         // Console.WriteLine("Makin it red when j is " + index.j);
+         await js.InvokeAsync<string>("GiveAlert", index.NumLetters, index.j, tileList);
+        
+
+         StateHasChanged();
+      }
+
+      private void ChangeColorblind(object colorblind)
+      {
+         foreach(Tile tile in tileList)
+            tile.Colorblind = (bool)colorblind;
+         foreach(Button button in buttonList)
+            button.Colorblind = (bool)colorblind;
+      }
       private void EnterEventHandler()
       {
          // form the word using the key of each tile

@@ -1,3 +1,5 @@
+@inject IJSRuntime js
+
 <div class="modal fade show d-block" tabindex="-1" role="dialog">
     <div class="modal-backdrop fade show"></div>
      <div class="modal-dialog" style="z-index: 1050; width: 300px;">
@@ -9,7 +11,10 @@
                 <div class="modal-body" style="text-align: center;">
                    <h>@Text</h>
                    <div class="container">
-                       @*Settings go here*@
+                        <label class="switch">
+                        <input type="checkbox" @onchange="eventArgs => { SettingsChangeColorblind(eventArgs.Value); }">
+                        <span class="slider round"></span>
+                    </label>
                    </div>
                 </div>
                
@@ -17,14 +22,3 @@
         </div>
 </div>
 
-@code{
-    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
-    [Parameter]public string Title { get; set; }
-    [Parameter]public string Text { get; set;}
-    [Inject] private NavigationManager NavigationManager { get; set; }
-
-    async Task Close() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
-
-   
-   
-}

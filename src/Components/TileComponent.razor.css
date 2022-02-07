@@ -1,4 +1,4 @@
-table, th, td {
+.tileTable, th, td {
 
     color:white;
     text-align: center;
@@ -11,4 +11,12 @@ td {
     font-size: 40px;
     font-weight: bold;
     border:2px solid gray;
+}
+
+@media only screen and (max-width: 700px) {
+.tileTable, .td, .tr{
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 10px !important;
+}
 }

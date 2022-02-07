@@ -1,58 +1,114 @@
 @using src.Components
 
+@{
+if(!@Tile.Colorblind)
+    switch (@Tile.State)
+    {
+    
+        case "contained":
+            <table class="tileTable" id="#@Tile.tileId" style="background-color:rgba(251,196,0, .8);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>
+        break;
 
-@switch (@Tile.State)
-{
-   
-    case "contained":
-        <table id="#@Tile.tileId" style="background-color:rgba(251,196,0, .8);">
-            <tr>
-                <td id=@Tile.tileId>@Tile.Letter</td>
-            </tr>
-        </table>
-    break;
+        case "doubleGreen":
+            <table class="tileTable" id="#@Tile.tileId" style="background: linear-gradient(45deg, #71ddf3 20%, rgb(4 170 109) 80%);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>
+        break;
 
-    case "doubleGreen":
-        <table id="#@Tile.tileId" style="background: linear-gradient(45deg, #71ddf3 20%, rgb(4 170 109) 80%);">
-            <tr>
-                <td id=@Tile.tileId>@Tile.Letter</td>
-            </tr>
-        </table>
-    break;
+        case "doubleYellow":
+            <table class="tileTable" id="#@Tile.tileId"  style="background: linear-gradient(45deg, #71ddf3 20%, rgb(251 196 0 / 80%) 80%);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>
+        break;
 
-    case "doubleYellow":
-        <table id="#@Tile.tileId"  style="background: linear-gradient(45deg, #71ddf3 20%, rgb(251 196 0 / 80%) 80%);">
-            <tr>
-                <td id=@Tile.tileId>@Tile.Letter</td>
-            </tr>
-        </table>
-    break;
+        case "missing":
+            <table class="tileTable" id="#@Tile.tileId" style="background-color:rgba(0,0,0, .4);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>
+        break;
 
-    case "missing":
-        <table id="#@Tile.tileId" style="background-color:rgba(0,0,0, .4);">
-            <tr>
-                <td id=@Tile.tileId>@Tile.Letter</td>
-            </tr>
-        </table>
-    break;
+        case "correct":
+            <table class="tileTable" id="#@Tile.tileId" style="background-color:rgba(4,170,109, 1);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>            
+        break;
 
-    case "correct":
-        <table id="#@Tile.tileId" style="background-color:rgba(4,170,109, 1);">
-            <tr>
-                <td id=@Tile.tileId>@Tile.Letter</td>
-            </tr>
-        </table>            
-    break;
+        default:
+            <table class="tileTable" id="#@Tile.tileId" style="background-color:#333;">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>    
+        break;
 
-    default:
-        <table id="#@Tile.tileId" style="background-color:#333;">
-            <tr>
-                <td id=@Tile.tileId>@Tile.Letter</td>
-            </tr>
-        </table>    
-    break;
+    }
+else
+    switch (@Tile.State)
+    {
+    
+        case "contained":
+            <table class="tileTable" id="#@Tile.tileId" style="background-color:rgba(251,196,0, .8);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>
+        break;
 
+        case "doubleGreen":
+            <table class="tileTable" id="#@Tile.tileId" style="background: linear-gradient(45deg, #8400CD 20%, #A40122 80%);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>
+        break;
+
+        case "doubleYellow":
+            <table class="tileTable" id="#@Tile.tileId"  style="background: linear-gradient(45deg, #8400CD 20%, rgb(251 196 0 / 80%) 80%);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>
+        break;
+
+        case "missing":
+            <table class="tileTable" id="#@Tile.tileId" style="background-color:rgba(0,0,0, .4);">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>
+        break;
+
+        case "correct":
+            <table class="tileTable" id="#@Tile.tileId" style="background-color:#A40122;">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>            
+        break;
+
+        default:
+            <table class="tileTable" id="#@Tile.tileId" style="background-color:#333;">
+                <tr>
+                    <td id=@Tile.tileId>@Tile.Letter</td>
+                </tr>
+            </table>    
+        break;
+
+    }
 }
+
 
 
 

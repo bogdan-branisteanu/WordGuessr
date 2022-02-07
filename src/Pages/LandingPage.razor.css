@@ -1,9 +1,18 @@
 .play-button{
     width: 150px;
-    height:100px;
+    height:56;
     border-radius: 12px;
-    font-size: 50px;
+    font-size: 30px;
     background-color:rgba(4,170,109, 1);;
     color: white;
     margin: 0 auto;
+}
+
+.dropdown-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.row{
+    justify-content: space-evenly;
 }
